@@ -15,6 +15,7 @@ type Config struct {
 	InitNumParticles         int
 	RandomSpawn              bool
 	SpawnX, SpawnY           int
+	MaxVitesseX,MaxVitesseY  float64
 	SpawnRate                float64
 }
 
