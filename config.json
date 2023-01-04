@@ -8,7 +8,7 @@
 	"RandomSpawn": true,
 	"SpawnX": 400,
 	"SpawnY": 300,
-	"SpawnRateOnOFF": true, /* Si activé alors il ajoutera <SpawnRate> de particules */
+	"SpawnRateOnOFF": true, 
 	"SpawnRate": 15,
 	"MaxVitesseX" : 10,
 	"MaxVitesseY" : 10,
