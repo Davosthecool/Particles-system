@@ -5,7 +5,7 @@
 	"ParticleImage": "assets/particle.png",
 	"Debug": true,
 	"InitNumParticles": 1,
-	"RandomSpawn": true,
+	"RandomSpawn": false,
 	"SpawnX": 400,
 	"SpawnY": 300,
 	"SpawnRate": 1,
