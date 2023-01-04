@@ -5,10 +5,12 @@
 	"ParticleImage": "assets/particle.png",
 	"Debug": true,
 	"InitNumParticles": 1,
-	"RandomSpawn": false,
+	"RandomSpawn": true,
 	"SpawnX": 400,
 	"SpawnY": 300,
 	"SpawnRate": 1,
 	"MaxVitesseX" : 5,
-	"MaxVitesseY" : 5
+	"MaxVitesseY" : 5,
+	"Gravity" :  true,
+	"Gravity_Value" : 20
 }

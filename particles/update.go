@@ -13,14 +13,15 @@ func (s *System) Update() {
 		particule_individuelle := element.Value.(*Particle)
 		particule_individuelle.PositionX += particule_individuelle.VitesseX
 		particule_individuelle.PositionY += particule_individuelle.VitesseY
+		if config.General.Gravity == true{
+			particule_individuelle.VitesseY+= config.General.Gravity_Value
+		}
 	}
-
-
-
-	
 	for i:=0; i< int(config.General.SpawnRate); i++{
 		s.newParticle()
 	}
+
+	
 }
 
 
