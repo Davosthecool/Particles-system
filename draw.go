@@ -17,7 +17,7 @@ func (g *game) Draw(screen *ebiten.Image) {
 
 	for e := g.system.Content.Front(); e != nil; e = e.Next() {
 		p, ok := e.Value.(*particles.Particle)
-		if /*p.Out */|| ok{
+		if ok{
 			options := ebiten.DrawImageOptions{}
 			options.GeoM.Rotate(p.Rotation)
 			options.GeoM.Scale(p.ScaleX, p.ScaleY)

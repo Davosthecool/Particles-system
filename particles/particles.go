@@ -12,12 +12,12 @@ func (s *System) newParticle() {
 		ColorRed: float64(rand.Float64()), ColorGreen: float64(rand.Float64()), ColorBlue: float64(rand.Float64()),
 		Opacity: 1,
 		VitesseX: float64(rand.Float64()*config.General.MaxVitesseX-config.General.MaxVitesseX/2),
-		VitesseY: float64((rand.Float64()*config.General.MaxVitesseY)-(config.General.MaxVitesseY/2)),
-		Out: false,
+		VitesseY: float64(rand.Float64()*config.General.MaxVitesseY-config.General.MaxVitesseY/2),
+		Lifetime : config.General.Lifetime,
 	}
 
 
-	if config.General.RandomSpawn == true{
+	if config.General.RandomSpawn{
 		newParticule.PositionX = float64(rand.Intn(config.General.WindowSizeX))
 		newParticule.PositionY = float64(rand.Intn(config.General.WindowSizeY))
 	}

@@ -7,6 +7,7 @@ import "container/list"
 // évoluer durant votre projet.
 type System struct {
 	Content *list.List
+	SpawnRate float64
 }
 
 // Particle définit une particule.
@@ -20,5 +21,6 @@ type Particle struct {
 	ColorRed, ColorGreen, ColorBlue float64
 	Opacity                         float64
 	VitesseX, VitesseY              float64
-	//Out                             bool
+	Lifetime						float64
+
 }

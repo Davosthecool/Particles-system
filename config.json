@@ -1,21 +1,21 @@
 {
 	"WindowTitle": "Project particles",
 	"WindowSizeX": 1900,
-    "WindowSizeY": 1000,
+    "WindowSizeY": 800,
 	"ParticleImage": "assets/particle.png",
 	"Debug": true,
-	"InitNumParticles": 1000,
-	"RandomSpawn": true,
-	"SpawnX": 400,
-	"SpawnY": 300,
-	"SpawnRateOnOFF": true, 
-	"SpawnRate": 15,
+	"InitNumParticles": 500,
+	"RandomSpawn": false,
+	"SpawnX": 500,
+	"SpawnY": 500,
+	"SpawnRate": 0, 
 	"MaxVitesseX" : 10,
 	"MaxVitesseY" : 10,
-	"Gravity" :  false,
-	"Gravity_Value" : 0.4,
-	"Kill_particule_WindowSizeX" : 500,
-	"Kill_particule_WindowSizeY" : 500
+	"GravityX" : 0,
+	"GravityY" : 0,
+	"Kill_particule_WindowSizeX" : 0,
+	"Kill_particule_WindowSizeY" : 0,
+	"Lifetime" : 0
 }
 
 

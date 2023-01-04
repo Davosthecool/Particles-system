@@ -12,26 +12,43 @@ func (s *System) Update() {
 
 	for element := s.Content.Front() ; element != nil ; element = element.Next(){
 		particule_individuelle := element.Value.(*Particle)
+
+		//ccccc
 		particule_individuelle.PositionX += particule_individuelle.VitesseX
 		particule_individuelle.PositionY += particule_individuelle.VitesseY
 
 
-		//Concerne la Gravité
-		if config.General.Gravity == true{
-			particule_individuelle.VitesseY+= config.General.Gravity_Value
+		particule_individuelle.VitesseX+= config.General.GravityX 
+		particule_individuelle.VitesseY+= config.General.GravityY
+
+
+		
+		particule_individuelle.Lifetime--
+
+		if config.General.Lifetime>0{
+			particule_individuelle.Opacity-= (1.0/config.General.Lifetime)
 		}
 
 
-		//Concerne l'extérieur de l'écran
-		if particule_individuelle.PositionX >= config.General.Kill_particule_WindowSizeX || particule_individuelle.PositionY >= config.General.Kill_particule_WindowSizeY{
-			particule_individuelle.Out = true
+		if particule_individuelle.PositionX > float64(config.General.WindowSizeX)+config.General.Kill_particule_WindowSizeX-10 || particule_individuelle.PositionX < -config.General.Kill_particule_WindowSizeX|| particule_individuelle.PositionY > float64(config.General.WindowSizeY)+config.General.Kill_particule_WindowSizeY-10 || particule_individuelle.PositionY < -config.General.Kill_particule_WindowSizeY{
+			s.Content.Remove(element)
 		}
-	}
-	if config.General.SpawnRateOnOFF{
-		for i:=0; i< int(config.General.SpawnRate); i++{
-			s.newParticle()
+
+		if (particule_individuelle.Lifetime <= 0 && config.General.Lifetime>0) || particule_individuelle.Opacity<=0{
+			s.Content.Remove(element)
 		}
+
+
 	}
+
+
+	/*Partie réservé au SpawnRate */ 
+	s.SpawnRate+=config.General.SpawnRate
+	for i:=0; i< int(s.SpawnRate); i++{
+		s.newParticle()
+	}
+	s.SpawnRate-=float64(int(s.SpawnRate))
+
 	
 }
 
