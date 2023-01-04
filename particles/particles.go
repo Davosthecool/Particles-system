@@ -9,7 +9,7 @@ func (s *System) newParticle() {
 		PositionX: float64(config.General.SpawnX),
 		PositionY: float64(config.General.SpawnY),
 		ScaleX:    1, ScaleY: 1,
-		ColorRed: 1, ColorGreen: 1, ColorBlue: 1,
+		ColorRed: float64(rand.Float64()), ColorGreen: float64(rand.Float64()), ColorBlue: float64(rand.Float64()),
 		Opacity: 1,
 		VitesseX: float64(rand.Float64()*config.General.MaxVitesseX-config.General.MaxVitesseX/2),
 		VitesseY: float64((rand.Float64()*config.General.MaxVitesseY)-(config.General.MaxVitesseY/2)),
