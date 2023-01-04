@@ -9,6 +9,7 @@ import (
 // projet.
 // C'est à vous de développer cette fonction.
 func (s *System) Update() {
+
 	for element := s.Content.Front() ; element != nil ; element = element.Next(){
 		particule_individuelle := element.Value.(*Particle)
 		particule_individuelle.PositionX += particule_individuelle.VitesseX
@@ -18,6 +19,12 @@ func (s *System) Update() {
 		//Concerne la Gravité
 		if config.General.Gravity == true{
 			particule_individuelle.VitesseY+= config.General.Gravity_Value
+		}
+
+
+		//Concerne l'extérieur de l'écran
+		if particule_individuelle.PositionX >= config.General.Kill_particule_WindowSizeX || particule_individuelle.PositionY >= config.General.Kill_particule_WindowSizeY{
+			particule_individuelle.Out = true
 		}
 	}
 	if config.General.SpawnRateOnOFF{

@@ -13,6 +13,7 @@ func (s *System) newParticle() {
 		Opacity: 1,
 		VitesseX: float64(rand.Float64()*config.General.MaxVitesseX-config.General.MaxVitesseX/2),
 		VitesseY: float64((rand.Float64()*config.General.MaxVitesseY)-(config.General.MaxVitesseY/2)),
+		Out: false,
 	}
 
 

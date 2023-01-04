@@ -13,7 +13,9 @@
 	"MaxVitesseX" : 10,
 	"MaxVitesseY" : 10,
 	"Gravity" :  false,
-	"Gravity_Value" : 0.4
+	"Gravity_Value" : 0.4,
+	"Kill_particule_WindowSizeX" : 500,
+	"Kill_particule_WindowSizeY" : 500
 }
 
 

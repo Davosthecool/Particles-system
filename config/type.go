@@ -20,6 +20,9 @@ type Config struct {
 	SpawnRate                float64
 	Gravity                  bool
 	Gravity_Value            float64
+	Kill_particule_WindowSizeX  float64
+	Kill_particule_WindowSizeY  float64
+
 }
 
 var General Config

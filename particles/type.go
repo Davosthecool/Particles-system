@@ -20,4 +20,5 @@ type Particle struct {
 	ColorRed, ColorGreen, ColorBlue float64
 	Opacity                         float64
 	VitesseX, VitesseY              float64
+	//Out                             bool
 }
