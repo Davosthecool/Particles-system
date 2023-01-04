@@ -12,6 +12,10 @@ import (
 // C'est à vous de développer cette fonction.
 // Dans sa version actuelle, cette fonction affiche une particule blanche au
 // centre de l'écran.
+
+
+
+
 func NewSystem() System {
 
 	l := list.New()

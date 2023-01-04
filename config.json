@@ -4,13 +4,16 @@
     "WindowSizeY": 600,
 	"ParticleImage": "assets/particle.png",
 	"Debug": true,
-	"InitNumParticles": 1,
+	"InitNumParticles": 1000,
 	"RandomSpawn": true,
 	"SpawnX": 400,
 	"SpawnY": 300,
-	"SpawnRate": 1,
-	"MaxVitesseX" : 5,
-	"MaxVitesseY" : 5,
-	"Gravity" :  true,
-	"Gravity_Value" : 20
+	"SpawnRateOnOFF": true, /* Si activé alors il ajoutera <SpawnRate> de particules */
+	"SpawnRate": 15,
+	"MaxVitesseX" : 10,
+	"MaxVitesseY" : 10,
+	"Gravity" :  false,
+	"Gravity_Value" : 0.4
 }
+
+

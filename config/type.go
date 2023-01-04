@@ -16,6 +16,7 @@ type Config struct {
 	RandomSpawn              bool
 	SpawnX, SpawnY           int
 	MaxVitesseX,MaxVitesseY  float64
+	SpawnRateOnOFF           bool
 	SpawnRate                float64
 	Gravity                  bool
 	Gravity_Value            float64
