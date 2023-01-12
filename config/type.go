@@ -8,19 +8,25 @@ package config
 // Vous pouvez ajouter des champs et ils seront automatiquement lus dans le
 // fichier de config. Vous devrez le faire plusieurs fois durant le projet.
 type Config struct {
-	WindowTitle              string
-	WindowSizeX, WindowSizeY int
-	ParticleImage            string
-	Debug                    bool
-	InitNumParticles         int
-	RandomSpawn              bool
-	SpawnX, SpawnY           int
-	MaxVitesseX,MaxVitesseY  float64
-	SpawnRate                float64
-	GravityX,GravityY        float64
-	Kill_particule_WindowSizeX  float64
-	Kill_particule_WindowSizeY  float64
-	Lifetime				 float64 //demandez si le float a un interet 
+	WindowTitle              	 string
+	WindowSizeX, WindowSizeY 	 int
+	ParticleImage            	 string
+	Debug                    	 bool
+	InitNumParticles         	 int
+	RandomSpawn             	 bool
+	SpawnX, SpawnY           	 int
+	MaxVitesseX,MaxVitesseY  	 float64
+	SpawnRate                	 float64
+	GravityX,GravityY        	 float64
+	Kill_particule_WindowSizeX   float64
+	Kill_particule_WindowSizeY   float64
+	OpacityLifetime  		 	 bool
+	Lifetime,ChangeOpacity       float64 
+	MinColorRed,MaxColorRed  	 float64
+	MinColorBlue,MaxColorBlue    float64
+	MinColorGreen,MaxColorGreen  float64
+	MinScaleX, MaxScaleX         float64
+	MinScaleY, MaxScaleY         float64
 }
 
 var General Config

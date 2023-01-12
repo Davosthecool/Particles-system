@@ -10,8 +10,19 @@ import (
 // C'est à vous de développer cette fonction.
 func (s *System) Update() {
 
-	for element := s.Content.Front() ; element != nil ; element = element.Next(){
-		particule_individuelle := element.Value.(*Particle)
+	for element := s.Content.Front() ; element != nil; {
+
+		p, ok := element.Value.(*Particle)
+
+		if !ok {
+			continue
+		}
+
+		if p.Alive==false{
+			element = element.Next()
+			continue
+		}
+		particule_individuelle := p
 
 		//ccccc
 		particule_individuelle.PositionX += particule_individuelle.VitesseX
@@ -25,18 +36,15 @@ func (s *System) Update() {
 		
 		particule_individuelle.Lifetime--
 
-		if config.General.Lifetime>0{
-			particule_individuelle.Opacity-= (1.0/config.General.Lifetime)
-		}
+		particule_individuelle.UpdateOpacity()
 
+		next := element.Next()
 
-		if particule_individuelle.PositionX > float64(config.General.WindowSizeX)+config.General.Kill_particule_WindowSizeX-10 || particule_individuelle.PositionX < -config.General.Kill_particule_WindowSizeX|| particule_individuelle.PositionY > float64(config.General.WindowSizeY)+config.General.Kill_particule_WindowSizeY-10 || particule_individuelle.PositionY < -config.General.Kill_particule_WindowSizeY{
-			s.Content.Remove(element)
+		if OutOfScreen(element.Value.(*Particle)) || particule_individuelle.Lifetime <= 0 && config.General.Lifetime>0 || particule_individuelle.Opacity<=0{
+			s.Content.PushBack(element)
+			element.Value.(*Particle).Alive=false
 		}
-
-		if (particule_individuelle.Lifetime <= 0 && config.General.Lifetime>0) || particule_individuelle.Opacity<=0{
-			s.Content.Remove(element)
-		}
+		element = next
 
 
 	}

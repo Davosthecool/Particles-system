@@ -19,8 +19,9 @@ type Particle struct {
 	Rotation                        float64
 	ScaleX, ScaleY                  float64
 	ColorRed, ColorGreen, ColorBlue float64
-	Opacity                         float64
+	Opacity, Base_Opacity           float64
 	VitesseX, VitesseY              float64
 	Lifetime						float64
+	Alive							bool
 
 }
