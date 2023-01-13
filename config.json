@@ -4,37 +4,40 @@
     "WindowSizeY": 800,
 	"ParticleImage": "assets/particle.png",
 	"Debug": true,
-	"InitNumParticles": 500,
+	"InitNumParticles": 0,
 
 	"RandomSpawn": false,
 	"SpawnX": 950,
 	"SpawnY": 400,
 	"SpawnRate": 10,
-	"ClickSpawn" : false,
+	"ClickMouseSpawn" : true,
+	"ClickSpawnRate" : 50,
 	"FollowMouseSpawn" : true, 
+	"EffectExplosion" :  true, 
+	"Bounce" : true,
 
 	"MaxVitesseX" : 10,
 	"MaxVitesseY" : 10,
 	"GravityX" : 0,
-	"GravityY" : 0,
+	"GravityY" : 0.1,
 
 	"Kill_particule_WindowSizeX" : -50,
 	"Kill_particule_WindowSizeY" : -50,
 
-	"Lifetime" : 180,
+	"Lifetime" : 360,
 	"OpacityLifetime" : false ,
 	"Commentaire_OpacityLifetime" : "Si True, l'opacité de la partitule variera en fonction du Lifetime. Si False, elle variera en fonction de ChangeOpacity",
 	"ChangeOpacity" : 0,
 	"Commentaire_ChangeOpacity" : "0 = aucun changement opacité. L'opacité évoluera par rapport au signe du nombre ",
 
 	"MinColorRed" : 1,
-	"MaxColorRed" : 0,
+	"MaxColorRed" : 1,
 
 	"MinColorGreen" : 0,
-	"MaxColorGreen" : 0,
+	"MaxColorGreen" : 1,
 
-	"MinColorBlue" : 0.9999999,
-	"MaxColorBlue" : 0.9999999,
+	"MinColorBlue" : 0.5,
+	"MaxColorBlue" : 0.5,
 
 
 	"MinScaleX" : 1 ,

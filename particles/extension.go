@@ -38,3 +38,23 @@ func OutOfScreen(p *Particle) bool{
 	}
 	return false
 }
+
+func OutOfKillScreen(x,y float64) bool{
+	if x > float64(config.General.WindowSizeX)+config.General.Kill_particule_WindowSizeX|| 
+	x < -config.General.Kill_particule_WindowSizeX|| 
+	y > float64(config.General.WindowSizeY)+config.General.Kill_particule_WindowSizeY|| 
+	y < -config.General.Kill_particule_WindowSizeY{
+		return true
+	}
+	return false
+}
+
+func (p *Particle)WallBounce(){
+	posx,posy := p.PositionX,p.PositionY 
+	switch{
+	case posx < -config.General.Kill_particule_WindowSizeX || posx> float64(config.General.WindowSizeX)+config.General.Kill_particule_WindowSizeX:
+		p.VitesseX*=-1
+	case posy < -config.General.Kill_particule_WindowSizeY || posy> float64(config.General.WindowSizeY)+config.General.Kill_particule_WindowSizeY:
+		p.VitesseY*=-1	
+	}
+}

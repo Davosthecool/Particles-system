@@ -20,12 +20,15 @@ func (s *System) newParticle() {
 		Lifetime : config.General.Lifetime,
 		Alive : true,
 	}
+
+
 	newParticule.Base_Opacity = newParticule.Opacity
 
 	if config.General.RandomSpawn{
 		newParticule.PositionX = float64(rand.Intn(config.General.WindowSizeX))
 		newParticule.PositionY = float64(rand.Intn(config.General.WindowSizeY))
 	}
+	
 	s.Content.PushFront(&newParticule)
 }
 
