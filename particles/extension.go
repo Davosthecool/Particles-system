@@ -5,6 +5,12 @@ import("math/rand"
 
 //Contiendra les extensions 
 
+func Abs(x float64) float64{
+	if x<0{
+		return -x
+	}
+	return x
+}
 
 func RandomBetweenInt(x, y int) int{
 	if x==y{
@@ -58,3 +64,4 @@ func (p *Particle)WallBounce(){
 		p.VitesseY*=-1	
 	}
 }
+

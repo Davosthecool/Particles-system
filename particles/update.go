@@ -25,6 +25,7 @@ func (s *System) Update() {
 		config.General.SpawnX,config.General.SpawnY=oldspawnx,oldspawny
 	}
 
+	
 
 	// if config.General.Explosion_Spawn && ebiten.IsMouseButtonPressed(ebiten.MouseButtonRight){
 		
@@ -54,6 +55,25 @@ func (s *System) Update() {
 		if OutOfScreen(element.Value.(*Particle)) || p.Lifetime <= 0 && config.General.Lifetime>0 || p.Opacity<=0{
 			s.Content.Remove(element)
 		}
+
+		// if config.General.EffectExplosion && ebiten.IsMouseButtonPressed(ebiten.MouseButtonRight){
+		// 	posx,posy :=ebiten.CursorPosition()
+		// 	ecart_x := float64(posx) - p.PositionX
+		// 	ecart_y := float64(posy) - p.PositionY
+
+		// 	if Abs(ecart_x + ecart_y) < 100 {
+		// 		// p.VitesseX = ecart_x*(p.VitesseX/ecart_x)
+		// 		// p.VitesseY = ecart_y*(p.VitesseY/ecart_y)
+		// 		switch{
+		// 		case Abs(ecart_x) <= 100:
+		// 			p.VitesseX*=-1
+		// 		case Abs(ecart_y) <= 100:
+		// 			p.VitesseY*=-1	
+		// 		}
+		// 	}
+
+		// }
+	
 		element = next
 
 
