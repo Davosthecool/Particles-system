@@ -9,7 +9,9 @@
 	"RandomSpawn": false,
 	"SpawnX": 950,
 	"SpawnY": 400,
-	"SpawnRate": 0, 
+	"SpawnRate": 10,
+	"ClickSpawn" : false,
+	"FollowMouseSpawn" : true, 
 
 	"MaxVitesseX" : 10,
 	"MaxVitesseY" : 10,
@@ -19,7 +21,7 @@
 	"Kill_particule_WindowSizeX" : -50,
 	"Kill_particule_WindowSizeY" : -50,
 
-	"Lifetime" : 0,
+	"Lifetime" : 180,
 	"OpacityLifetime" : false ,
 	"Commentaire_OpacityLifetime" : "Si True, l'opacité de la partitule variera en fonction du Lifetime. Si False, elle variera en fonction de ChangeOpacity",
 	"ChangeOpacity" : 0,

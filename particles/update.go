@@ -2,6 +2,7 @@ package particles
 
 import (
 	"project-particles/config"
+	"github.com/hajimehoshi/ebiten/v2"
 )
 // Update mets à jour l'état du système de particules (c'est-à-dire l'état de
 // chacune des particules) à chaque pas de temps. Elle est appellée exactement
@@ -9,19 +10,22 @@ import (
 // projet.
 // C'est à vous de développer cette fonction.
 func (s *System) Update() {
-
+	if config.General.FollowMouseSpawn{
+		config.General.SpawnX,config.General.SpawnY= ebiten.CursorPosition()
+	}
+	
 	for element := s.Content.Front() ; element != nil; {
 
-		p, ok := element.Value.(*Particle)
+		p, _ := element.Value.(*Particle)
 
-		if !ok {
-			continue
-		}
+		// if !ok {
+		// 	continue
+		// }
 
-		if p.Alive==false{
-			element = element.Next()
-			continue
-		}
+		// if p.Alive==false{
+		// 	element = element.Next() 
+		// 	continue
+		// }
 		particule_individuelle := p
 
 		//ccccc
@@ -41,13 +45,16 @@ func (s *System) Update() {
 		next := element.Next()
 
 		if OutOfScreen(element.Value.(*Particle)) || particule_individuelle.Lifetime <= 0 && config.General.Lifetime>0 || particule_individuelle.Opacity<=0{
-			s.Content.PushBack(element)
-			element.Value.(*Particle).Alive=false
+			s.Content.Remove(element)
 		}
 		element = next
 
 
 	}
+
+
+	//CLickSpawn 
+	
 
 
 	/*Partie réservé au SpawnRate */ 

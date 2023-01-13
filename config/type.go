@@ -27,6 +27,7 @@ type Config struct {
 	MinColorGreen,MaxColorGreen  float64
 	MinScaleX, MaxScaleX         float64
 	MinScaleY, MaxScaleY         float64
+	ClickSpawn,FollowMouseSpawn	 bool
 }
 
 var General Config
