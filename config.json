@@ -14,7 +14,7 @@
 	"ClickSpawnRate" : 15,
 	"FollowMouseSpawn" : false, 
 	"EffectExplosion" :  true, 
-	"Bounce" : false,
+	"Bounce" : true,
 
 	"MaxVitesseX" : 10,
 	"MaxVitesseY" : 10,
@@ -25,9 +25,9 @@
 	"Kill_particule_WindowSizeY" : -150,
 
 	"Lifetime" : 360,
-	"OpacityLifetime" : false ,
+	"OpacityLifetime" : true ,
 	"Commentaire_OpacityLifetime" : "Si True, l'opacité de la partitule variera en fonction du Lifetime. Si False, elle variera en fonction de ChangeOpacity",
-	"ChangeOpacity" : 0,
+	"ChangeOpacity" : -0.1,
 	"Commentaire_ChangeOpacity" : "0 = aucun changement opacité. L'opacité évoluera par rapport au signe du nombre ",
 
 	"MinColorRed" : 1,

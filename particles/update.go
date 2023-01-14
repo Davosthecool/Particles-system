@@ -8,7 +8,8 @@ import (
 // chacune des particules) à chaque pas de temps. Elle est appellée exactement
 // 60 fois par seconde (de manière régulière) par la fonction principale du
 // projet.
-// C'est à vous de développer cette fonction.
+
+
 func (s *System) Update() {
 	if config.General.FollowMouseSpawn{
 		config.General.SpawnX,config.General.SpawnY= ebiten.CursorPosition()
@@ -31,6 +32,12 @@ func (s *System) Update() {
 		
 		
 	// }
+
+
+
+	//Chaque particule du système est transférée dans une variable "particule_individuelle".
+	//Dans celle-ci, nous ajoutons une vitesse aléatoire (voir particle.go) à la position de la particule située dans "particule_individuelle".
+	//Sachant que la vitesse est aléatoire, chaque particule comportera une position différente en fonction de la valeur de leur vitesseX et VitesseY.
 	for element := s.Content.Front() ; element != nil; {
 
 		p, _ := element.Value.(*Particle)
@@ -80,11 +87,11 @@ func (s *System) Update() {
 	}
 
 
-	//CLickSpawn 
+
 	
-
-
-	/*Partie réservé au SpawnRate */ 
+	//Ce bout de code permet de générer un nombre de particules, défini par SpawRate dans config.json, par seconde.
+	//La boucle permet ainsi de créer ce nombre de particule grâce à la méthode newParticle (présente dans particle.go)
+	// **Mettre ligne pour OutofKillScreen
 	s.SpawnRate+=config.General.SpawnRate
 	if !OutOfKillScreen(float64(config.General.SpawnX),float64(config.General.SpawnY)){
 		for i:=0; i< int(s.SpawnRate); i++{
