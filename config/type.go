@@ -13,8 +13,10 @@ type Config struct {
 	ParticleImage            	 		string
 	Debug                    	 		bool
 	InitNumParticles         	 		int
-	RandomSpawn             			bool
+	RotationParticule                   float64
+	TypeGenerateur						int
 	SpawnX, SpawnY           	 		int
+	RayonSpawnX,RayonSpawnY				float64
 	MaxVitesseX,MaxVitesseY  	 		float64
 	SpawnRate                	 		float64
 	GravityX,GravityY        	 		float64

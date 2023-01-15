@@ -28,7 +28,9 @@ func (g *game) Draw(screen *ebiten.Image) {
 	}
 
 	if config.General.Debug {
-		ebitenutil.DebugPrint(screen, fmt.Sprint(ebiten.CurrentTPS()))
+		ebitenutil.DebugPrint(screen,fmt.Sprint("Nombre de FPS présents : ", ebiten.CurrentTPS()))
+		ebitenutil.DebugPrintAt(screen, fmt.Sprint("InitNumParticles : ",config.General.InitNumParticles),0,15)
+		ebitenutil.DebugPrintAt(screen, fmt.Sprint("Nombres de particules : ",g.system.Content.Len()),0,30)
 	}
 
 }

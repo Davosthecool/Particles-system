@@ -1,6 +1,7 @@
 package particles
 
 import("math/rand"
+		"math"
 		"project-particles/config")
 
 //Contiendra les extensions 
@@ -30,6 +31,10 @@ func RandomBetweenFloat(x, y float64) float64{
 		x,y=y,x
 	}
 	return rand.Float64()*(y-x)+x
+}
+
+func RandomChoice(l []float64) float64{
+	return l[rand.Intn(len(l))]
 }
 
 func OutOfScreen(p *Particle) bool{
@@ -65,3 +70,21 @@ func (p *Particle)WallBounce(){
 	}
 }
 
+
+
+func Distance(x1, x2, y1, y2 float64) float64{
+	return math.Sqrt(math.Pow((x2-x1),2)+math.Pow((y2-y1),2))
+}
+
+func Vecteur(x1, x2, y1, y2 float64) (xfinal, yfinal float64){
+	xfinal = x2 - x1 
+	yfinal = y2 - y1 
+	return xfinal, yfinal
+}
+
+func RandomVecteur(l float64) (x,y float64){
+	negate:=[]float64{1.0,-1.0}
+	x=RandomBetweenFloat(0,l)
+	y=l-x
+	return x*RandomChoice(negate),y*RandomChoice(negate)
+}

@@ -10,6 +10,7 @@ func (s *System) newParticle() {
 	newParticule := Particle{
 		PositionX: float64(config.General.SpawnX),
 		PositionY: float64(config.General.SpawnY),
+		Rotation: 0,
 
 		ScaleX: RandomBetweenFloat(config.General.MinScaleX, config.General.MaxScaleX), 
 		ScaleY: RandomBetweenFloat(config.General.MinScaleY, config.General.MaxScaleY),
@@ -30,16 +31,26 @@ func (s *System) newParticle() {
 	}
 	newParticule.Base_Opacity = newParticule.Opacity
 
+	newParticule.SetSpawn()
 
 
-	//Si le RandomSpawn est activé depuis config.json alors chaque particule aura une position différente sur les axes X et Y comprise entre 0 et la valeur défini dans WindowSiseX et WindowSizeY
-	if config.General.RandomSpawn{
-		newParticule.PositionX = float64(rand.Intn(config.General.WindowSizeX))
-		newParticule.PositionY = float64(rand.Intn(config.General.WindowSizeY))
-	}
 	
 	s.Content.PushFront(&newParticule) // On insère cette nouvelle particule dans la liste du système afin que celui-ci puisse l'afficher.
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 func (p *Particle) UpdateOpacity(){
@@ -51,3 +62,53 @@ func (p *Particle) UpdateOpacity(){
 	}
 	
 }
+
+
+//crée une valeur random de spawn , on crée les bords de notre zone de spawn. Si les bords de notre zone de spawn dépasse les bornes de la killzone alors on les rétrécit pour les rentrer dedans.
+func (p *Particle) SetSpawn(){
+
+	//Si le TypeGenerateur est -1 depuis config.json alors chaque particule aura une position différente sur les axes X et Y comprise entre 0 et la valeur défini dans WindowSizeX et WindowSizeY
+	if config.General.TypeGenerateur == -1{
+		p.PositionX = RandomBetweenFloat(-config.General.Kill_particule_WindowSizeX,float64(config.General.WindowSizeX)+config.General.Kill_particule_WindowSizeX)
+		p.PositionY = RandomBetweenFloat(-config.General.Kill_particule_WindowSizeY,float64(config.General.WindowSizeY)+config.General.Kill_particule_WindowSizeY)
+	}
+
+	if config.General.TypeGenerateur == 1{
+		haut := float64(config.General.SpawnY)-config.General.RayonSpawnY
+		bas := float64(config.General.SpawnY)+config.General.RayonSpawnY
+		gauche :=float64(config.General.SpawnX)-config.General.RayonSpawnX
+		droite := float64(config.General.SpawnX)+config.General.RayonSpawnX
+		
+	
+		if gauche < -config.General.Kill_particule_WindowSizeX{
+			gauche = -config.General.Kill_particule_WindowSizeX
+		}
+		if droite> float64(config.General.WindowSizeX)+config.General.Kill_particule_WindowSizeX{
+			droite = float64(config.General.WindowSizeX)+config.General.Kill_particule_WindowSizeX
+		}
+		if haut < -config.General.Kill_particule_WindowSizeY{
+			haut = -config.General.Kill_particule_WindowSizeY
+		}
+		if bas > float64(config.General.WindowSizeY)+config.General.Kill_particule_WindowSizeY{
+			bas = float64(config.General.WindowSizeY)+config.General.Kill_particule_WindowSizeY
+		}
+		p.PositionX =  RandomBetweenFloat(gauche,droite)
+		p.PositionY =  RandomBetweenFloat(haut,bas)
+	}
+
+	if config.General.TypeGenerateur == 2{
+		vecx,vecy:=RandomVecteur(RandomBetweenFloat(-config.General.RayonSpawnX,config.General.RayonSpawnX))
+		p.PositionX+=vecx
+		p.PositionY+=vecy
+	}
+
+	if config.General.TypeGenerateur == 3{
+		vecx,vecy:=RandomVecteur(RandomBetweenFloat(-config.General.RayonSpawnX,config.General.RayonSpawnX))
+		p.PositionX+=vecx
+		p.PositionY+=vecy
+	}
+}
+
+
+
+

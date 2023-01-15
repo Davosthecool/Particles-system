@@ -56,6 +56,7 @@ func (s *System) Update() {
 		p.Lifetime--
 
 		p.UpdateOpacity()
+		//p.Rotation += config.General.RotationParticule
 
 		next := element.Next()
 
