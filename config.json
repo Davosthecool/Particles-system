@@ -3,7 +3,7 @@
 	"WindowSizeX": 1900,
     "WindowSizeY": 800,
 	"ParticleImage": "assets/particle.png",
-	"Debug": true,
+	"Debug": false,
 	"InitNumParticles": 10,
 	"RotationParticule": 20,
 
@@ -29,7 +29,7 @@
 	"Kill_particule_WindowSizeX" : -150,
 	"Kill_particule_WindowSizeY" : -150,
 
-	"Lifetime" : 360,
+	"Lifetime" : 6000,
 	"OpacityLifetime" : true ,
 	"Commentaire_OpacityLifetime" : "Si True, l'opacité de la partitule variera en fonction du Lifetime. Si False, elle variera en fonction de ChangeOpacity",
 	"ChangeOpacity" : -0.01,

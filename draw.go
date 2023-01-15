@@ -14,7 +14,6 @@ import (
 // la bibliothèque Ebiten. Cette fonction pourra être légèrement modifiée quand
 // c'est précisé dans le sujet.
 func (g *game) Draw(screen *ebiten.Image) {
-
 	for e := g.system.Content.Front(); e != nil; e = e.Next() {
 		p, ok := e.Value.(*particles.Particle)
 		if ok{
@@ -26,7 +25,6 @@ func (g *game) Draw(screen *ebiten.Image) {
 			screen.DrawImage(assets.ParticleImage, &options)
 		}
 	}
-
 	if config.General.Debug {
 		ebitenutil.DebugPrintAt(screen,fmt.Sprint("Nombre de TPS  : ", ebiten.ActualTPS()), config.General.WindowSizeX-250, 0)
 		ebitenutil.DebugPrintAt(screen,fmt.Sprint("Nombre de FPS  : ", ebiten.ActualFPS()),  config.General.WindowSizeX-250, 15)
@@ -51,7 +49,7 @@ func (g *game) Draw(screen *ebiten.Image) {
 		ebitenutil.DebugPrintAt(screen, fmt.Sprint("MaxVitesseX : ",config.General.MaxVitesseX),0,240)
 		ebitenutil.DebugPrintAt(screen, fmt.Sprint("MaxVitesseY : ",config.General.MaxVitesseY),0,255)
 		ebitenutil.DebugPrintAt(screen, fmt.Sprint("GravityX : ",config.General.GravityX),0,270)
-		ebitenutil.DebugPrintAt(screen, fmt.Sprint("GravityY : ",config.General.MaxVitesseY),0,285)
+		ebitenutil.DebugPrintAt(screen, fmt.Sprint("GravityY : ",config.General.GravityY),0,285)
 
 
 		ebitenutil.DebugPrintAt(screen, fmt.Sprint("Kill_particule_WindowSizeX : ",config.General.Kill_particule_WindowSizeX),0,315)
@@ -64,20 +62,20 @@ func (g *game) Draw(screen *ebiten.Image) {
 		ebitenutil.DebugPrintAt(screen, fmt.Sprint("MinColorRed : ",config.General.MinColorRed),0,420)
 		ebitenutil.DebugPrintAt(screen, fmt.Sprint("MaxColorRed : ",config.General.MaxColorRed),0,435)
 
-		ebitenutil.DebugPrintAt(screen, fmt.Sprint("MinColorGreen : ",config.General.MaxVitesseY),0,465)
-		ebitenutil.DebugPrintAt(screen, fmt.Sprint("MaxColorGreen : ",config.General.MaxVitesseY),0,480)
+		ebitenutil.DebugPrintAt(screen, fmt.Sprint("MinColorGreen : ",config.General.MinColorGreen),0,465)
+		ebitenutil.DebugPrintAt(screen, fmt.Sprint("MaxColorGreen : ",config.General.MaxColorGreen),0,480)
 
-		ebitenutil.DebugPrintAt(screen, fmt.Sprint("MinColorBlue : ",config.General.MaxVitesseY),0,510)
-		ebitenutil.DebugPrintAt(screen, fmt.Sprint("MaxColorBlue : ",config.General.MaxVitesseY),0,525)
+		ebitenutil.DebugPrintAt(screen, fmt.Sprint("MinColorBlue : ",config.General.MinColorBlue),0,510)
+		ebitenutil.DebugPrintAt(screen, fmt.Sprint("MaxColorBlue : ",config.General.MaxColorBlue),0,525)
 
-		ebitenutil.DebugPrintAt(screen, fmt.Sprint("MinScaleX : ",config.General.MaxVitesseY),0,555)
-		ebitenutil.DebugPrintAt(screen, fmt.Sprint("MaxScaleX : ",config.General.MaxVitesseY),0,570)
+		ebitenutil.DebugPrintAt(screen, fmt.Sprint("MinScaleX : ",config.General.MinScaleX),0,555)
+		ebitenutil.DebugPrintAt(screen, fmt.Sprint("MaxScaleX : ",config.General.MaxScaleX),0,570)
 
 		ebitenutil.DebugPrintAt(screen, fmt.Sprint("MinScaleY : ",config.General.MinScaleY),0,600)
 		ebitenutil.DebugPrintAt(screen, fmt.Sprint("MaxScaleY : ",config.General.MaxScaleY),0,615)
 
-		ebitenutil.DebugPrintAt(screen, fmt.Sprint("MaxScaleY : ",config.General.MaxScaleY),0,645)
-
+	}else{
+		ebitenutil.DebugPrint(screen,fmt.Sprint("Appuyez sur Echap pour voir/retirer le menu"))
 	}
 
 }
