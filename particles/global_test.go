@@ -31,7 +31,7 @@ func TestNewLongueurRandom(t *testing.T) {
 
 func TestParticlePositionFixed(t *testing.T) {
 	config.Get("../config.json")
-	config.General.RandomSpawn = false
+	config.General.TypeGenerateur = 0
 	config.General.InitNumParticles = rand.Intn(100)
 	var posx,posy float64
 	
@@ -50,7 +50,7 @@ func TestParticlePositionFixed(t *testing.T) {
 
 func TestParticlePositionRandom(t *testing.T) {
 	config.Get("../config.json")
-	config.General.RandomSpawn = true
+	config.General.TypeGenerateur = -1
 	config.General.InitNumParticles = rand.Intn(100)
 	var compt int
 	for element := NewSystem().Content.Front() ; element != nil ; element = element.Next(){
@@ -58,7 +58,7 @@ func TestParticlePositionRandom(t *testing.T) {
 			compt+=1
 		}
 		if compt == NewSystem().Content.Len(){
-			t.Error("Vos particules comportent une position fixe alors que votre RandomSpawn est à", config.General.RandomSpawn)
+			t.Error("Vos particules comportent une position fixe alors que votre RandomSpawn est à", config.General.TypeGenerateur)
 		}
 			
 	}

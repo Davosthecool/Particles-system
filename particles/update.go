@@ -84,6 +84,8 @@ func (s *System) Update() {
 	
 		element = next
 
+		print()
+
 
 	}
 
