@@ -10,7 +10,6 @@
 	"Kill_particule_WindowSizeY" : 50,
 
 	"InitNumParticles": 0,
-	"RotationParticule": 5,
 
 	"TypeGenerateur" : 1,
 	"CommentaireTypeGenerateur" : "-1 = RandomSpawn / 0 =  en forme de point / 1 = en forme de rectangle / 2 = en forme de cercle  / 3 = en forme de losange",

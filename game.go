@@ -11,7 +11,7 @@ import ("project-particles/particles"
 // pour les deux dernières extensions.
 type game struct {
 	system particles.System
-	Value string
+	Value, Value_final string
 	ReadMode bool
 	SelectMode bool
 	ReadHelp bool
