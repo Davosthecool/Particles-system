@@ -1,40 +1,41 @@
 {
 	"WindowTitle": "Project particles",
-	"WindowSizeX": 1900,
-    "WindowSizeY": 800,
 	"ParticleImage": "assets/particle.png",
 	"Debug": false,
+
+
+	"WindowSizeX": 1900,
+    "WindowSizeY": 800,
+	"Kill_particule_WindowSizeX" : -150,
+	"Kill_particule_WindowSizeY" : -150,
+
 	"InitNumParticles": 10,
 	"RotationParticule": 20,
 
 	"TypeGenerateur" : 2,
 	"CommentaireTypeGenerateur" : "-1 = RandomSpawn / 0 =  en forme de point / 1 = en forme de rectangle / 2 = en forme de cercle  / 3 = en forme de losange",
+	"SpawnRate": 10,
 	"SpawnX": 950,
 	"SpawnY": 400,
 	"RayonSpawnX" : 30,
 	"RayonSpawnY" : 1,
-	"SpawnRate": 0,
-
+	
 	"ClickMouseSpawn" : true,
 	"ClickSpawnRate" : 15,
 	"FollowMouseSpawn" : false, 
 	"EffectExplosion" :  true, 
-	"Bounce" : true,
-
+	
 	"MaxVitesseX" : 10,
 	"MaxVitesseY" : 10,
 	"GravityX" : 0,
 	"GravityY" : 0,
+	"Bounce" : true,
 
-	"Kill_particule_WindowSizeX" : -150,
-	"Kill_particule_WindowSizeY" : -150,
-
-	"Lifetime" : 6000,
+	"Lifetime" : 180,
 	"OpacityLifetime" : true ,
 	"Commentaire_OpacityLifetime" : "Si True, l'opacité de la partitule variera en fonction du Lifetime. Si False, elle variera en fonction de ChangeOpacity",
 	"ChangeOpacity" : -0.01,
 	"Commentaire_ChangeOpacity" : "0 = aucun changement opacité. L'opacité évoluera par rapport au signe du nombre ",
-
 
 	"MinColorRed" : 0,
 	"MaxColorRed" : 0,
@@ -44,7 +45,6 @@
 
 	"MinColorBlue" : 0,
 	"MaxColorBlue" : 1,
-
 
 	"MinScaleX" : 1 ,
 	"MaxScaleX" : 1, 

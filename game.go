@@ -1,7 +1,8 @@
 package main
 
 import ("project-particles/particles"
-		"github.com/hajimehoshi/ebiten/v2")
+		// "github.com/hajimehoshi/ebiten/v2"
+	)
 
 // game est un type qui implémente l'interface Game de la bibliothèque Ebiten
 // car il dispose d'une méthode Update, d'une méthode Draw et d'une méthode
@@ -10,5 +11,7 @@ import ("project-particles/particles"
 // pour les deux dernières extensions.
 type game struct {
 	system particles.System
-	pressedKeys []ebiten.Key
+	Value string
+	ReadMode bool
+	SelectMode bool
 }

@@ -78,4 +78,8 @@ func (g *game) Draw(screen *ebiten.Image) {
 		ebitenutil.DebugPrint(screen,fmt.Sprint("Appuyez sur Echap pour voir/retirer le menu"))
 	}
 
+	if g.ReadMode{
+		ebitenutil.DebugPrintAt(screen, fmt.Sprint("Valeur : ",g.Value),500,50)
+	}
+
 }

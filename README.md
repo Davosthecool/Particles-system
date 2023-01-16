@@ -18,3 +18,11 @@ Cette partie de projet comporte la création de particules sur une interface afi
 
 L'utilisateur peut choisir les paramètres qu'il souhaite à travers le config.json (choix d'une apparition aléatoire pour chaque particule ou non, choix du nombre de particules qui doivent apparaitre, ...)
 
+
+
+## A demander 
+
+FOnction oour le cercle trouver a partir d'un angle et un rayon la hauteur y
+Boucle pour l'interface ecriture auto avec dictionnaire
+Explosion click droit
+test maybe

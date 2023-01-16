@@ -26,7 +26,9 @@ func (s *System) Update() {
 		config.General.SpawnX,config.General.SpawnY=oldspawnx,oldspawny
 	}
 
-	
+	if ebiten.IsMouseButtonPressed(ebiten.MouseButtonRight) && !OutOfKillScreen(float64(posx),float64(posy)){
+		config.General.SpawnX,config.General.SpawnY= ebiten.CursorPosition()
+	}
 
 	// if config.General.Explosion_Spawn && ebiten.IsMouseButtonPressed(ebiten.MouseButtonRight){
 		
