@@ -72,11 +72,11 @@ func (p *Particle)WallBounce(){
 
 
 
-func Distance(x1, x2, y1, y2 float64) float64{
-	return math.Sqrt(math.Pow((x2-x1),2)+math.Pow((y2-y1),2))
+func Distance(x1, y1, x2, y2 float64) float64{
+	return math.Sqrt(Abs(math.Pow((x2-x1),2)+math.Pow((y2-y1),2)))
 }
 
-func Vecteur(x1, x2, y1, y2 float64) (xfinal, yfinal float64){
+func Vecteur(x1, y1, x2, y2 float64) (xfinal, yfinal float64){
 	xfinal = x2 - x1 
 	yfinal = y2 - y1 
 	return xfinal, yfinal

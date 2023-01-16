@@ -15,4 +15,12 @@ type game struct {
 	ReadMode bool
 	SelectMode bool
 	ReadHelp bool
+	LineSelected int
+}
+
+type LineDraw struct{
+	NumLine int
+	NameValue string
+	Value *int
+	
 }

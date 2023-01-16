@@ -21,7 +21,7 @@ func (s *System) Update() {
 	if config.General.ClickMouseParticules && ebiten.IsMouseButtonPressed(ebiten.MouseButtonLeft) && !OutOfKillScreen(float64(posx),float64(posy)){
 		for i:=0.0;i<config.General.ClickSpawnRate;i++{
 			config.General.SpawnX,config.General.SpawnY= ebiten.CursorPosition()
-			//s.newParticle()
+			s.newParticle()
 		}
 		config.General.SpawnX,config.General.SpawnY=oldspawnx,oldspawny
 	}
@@ -66,23 +66,23 @@ func (s *System) Update() {
 			s.Content.Remove(element)
 		}
 
-		// if config.General.EffectExplosion && ebiten.IsMouseButtonPressed(ebiten.MouseButtonRight){
-		// 	posx,posy :=ebiten.CursorPosition()
-		// 	ecart_x := float64(posx) - p.PositionX
-		// 	ecart_y := float64(posy) - p.PositionY
-
-		// 	if Abs(ecart_x + ecart_y) < 100 {
-		// 		// p.VitesseX = ecart_x*(p.VitesseX/ecart_x)
-		// 		// p.VitesseY = ecart_y*(p.VitesseY/ecart_y)
-		// 		switch{
-		// 		case Abs(ecart_x) <= 100:
-		// 			p.VitesseX*=-1
-		// 		case Abs(ecart_y) <= 100:
-		// 			p.VitesseY*=-1	
-		// 		}
-		// 	}
-
-		// }
+		if config.General.EffectExplosion && ebiten.IsMouseButtonPressed(ebiten.MouseButtonMiddle){
+			posx,posy :=ebiten.CursorPosition()	
+			ecart_x,ecart_y := Vecteur(p.PositionX,p.PositionY,float64(posx),float64(posy))
+			if ecart_x <50 && ecart_y<50{
+				if float64(posx)>p.PositionX{
+					p.VitesseX-= 0.1*ecart_x
+				}
+				if float64(posx)<p.PositionX{
+					p.VitesseX+= 0.1*ecart_x
+				}
+				if float64(posy)>p.PositionY{
+					p.VitesseY-= 0.1*ecart_y
+				}else{
+					p.VitesseY+= 0.1*ecart_y
+				}
+			}
+		}
 	
 		element = next
 	}

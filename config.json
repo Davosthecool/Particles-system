@@ -29,7 +29,7 @@
 	"MaxVitesseY" : 0,
 	"GravityX" : 0,
 	"GravityY" : 0,
-	"Bounce" : true,
+	"Bounce" : false,
 
 	"Lifetime" : 180,
 	"OpacityLifetime" : true ,
