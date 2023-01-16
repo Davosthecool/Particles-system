@@ -85,6 +85,6 @@ func Vecteur(x1, x2, y1, y2 float64) (xfinal, yfinal float64){
 func RandomVecteur(l float64) (x,y float64){
 	negate:=[]float64{1.0,-1.0}
 	x=RandomBetweenFloat(0,l)
-	y=l-x
+	y=math.Sqrt(Abs(math.Pow(x,2)-math.Pow(l,2)))
 	return x*RandomChoice(negate),y*RandomChoice(negate)
 }

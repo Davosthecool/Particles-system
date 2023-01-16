@@ -6,27 +6,27 @@
 
 	"WindowSizeX": 1900,
     "WindowSizeY": 800,
-	"Kill_particule_WindowSizeX" : -150,
-	"Kill_particule_WindowSizeY" : -150,
+	"Kill_particule_WindowSizeX" : 50,
+	"Kill_particule_WindowSizeY" : 50,
 
-	"InitNumParticles": 10,
-	"RotationParticule": 20,
+	"InitNumParticles": 0,
+	"RotationParticule": 5,
 
-	"TypeGenerateur" : 2,
+	"TypeGenerateur" : 1,
 	"CommentaireTypeGenerateur" : "-1 = RandomSpawn / 0 =  en forme de point / 1 = en forme de rectangle / 2 = en forme de cercle  / 3 = en forme de losange",
-	"SpawnRate": 10,
+	"SpawnRate": 1,
 	"SpawnX": 950,
 	"SpawnY": 400,
-	"RayonSpawnX" : 30,
-	"RayonSpawnY" : 1,
+	"RayonSpawnX" : 500,
+	"RayonSpawnY" : 200,
 	
-	"ClickMouseSpawn" : true,
+	"ClickMouseParticules" : true,
 	"ClickSpawnRate" : 15,
 	"FollowMouseSpawn" : false, 
 	"EffectExplosion" :  true, 
 	
-	"MaxVitesseX" : 10,
-	"MaxVitesseY" : 10,
+	"MaxVitesseX" : 0,
+	"MaxVitesseY" : 0,
 	"GravityX" : 0,
 	"GravityY" : 0,
 	"Bounce" : true,
@@ -38,13 +38,13 @@
 	"Commentaire_ChangeOpacity" : "0 = aucun changement opacité. L'opacité évoluera par rapport au signe du nombre ",
 
 	"MinColorRed" : 0,
-	"MaxColorRed" : 0,
+	"MaxColorRed" : 0.5,
 
-	"MinColorGreen" : 0,
+	"MinColorGreen" : 0.5,
 	"MaxColorGreen" : 0,
 
 	"MinColorBlue" : 0,
-	"MaxColorBlue" : 1,
+	"MaxColorBlue" : 0.5,
 
 	"MinScaleX" : 1 ,
 	"MaxScaleX" : 1, 

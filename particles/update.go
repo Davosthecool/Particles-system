@@ -18,10 +18,10 @@ func (s *System) Update() {
 
 	posx,posy :=ebiten.CursorPosition()
 	oldspawnx,oldspawny:=config.General.SpawnX,config.General.SpawnY
-	if config.General.ClickMouseSpawn && ebiten.IsMouseButtonPressed(ebiten.MouseButtonLeft) && !OutOfKillScreen(float64(posx),float64(posy)){
+	if config.General.ClickMouseParticules && ebiten.IsMouseButtonPressed(ebiten.MouseButtonLeft) && !OutOfKillScreen(float64(posx),float64(posy)){
 		for i:=0.0;i<config.General.ClickSpawnRate;i++{
 			config.General.SpawnX,config.General.SpawnY= ebiten.CursorPosition()
-			s.newParticle()
+			//s.newParticle()
 		}
 		config.General.SpawnX,config.General.SpawnY=oldspawnx,oldspawny
 	}
@@ -58,7 +58,7 @@ func (s *System) Update() {
 		p.Lifetime--
 
 		p.UpdateOpacity()
-		//p.Rotation += config.General.RotationParticule
+		p.Rotation += 0.01*config.General.RotationParticule
 
 		next := element.Next()
 
@@ -85,10 +85,6 @@ func (s *System) Update() {
 		// }
 	
 		element = next
-
-		print()
-
-
 	}
 
 

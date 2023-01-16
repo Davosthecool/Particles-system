@@ -22,7 +22,7 @@ L'utilisateur peut choisir les paramètres qu'il souhaite à travers le config.j
 
 ## A demander 
 
-FOnction oour le cercle trouver a partir d'un angle et un rayon la hauteur y
+FOnction oour le cercle trouver a partir d'un angle et un rayon la hauteur y = GOOD
 Boucle pour l'interface ecriture auto avec dictionnaire
-Explosion click droit
+Explosion click droit = 
 test maybe

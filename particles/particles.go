@@ -97,15 +97,18 @@ func (p *Particle) SetSpawn(){
 	}
 
 	if config.General.TypeGenerateur == 2{
-		vecx,vecy:=RandomVecteur(RandomBetweenFloat(-config.General.RayonSpawnX,config.General.RayonSpawnX))
+		vecx,vecy:=RandomVecteur(RandomBetweenFloat(0,config.General.RayonSpawnX))
 		p.PositionX+=vecx
 		p.PositionY+=vecy
 	}
 
 	if config.General.TypeGenerateur == 3{
-		vecx,vecy:=RandomVecteur(RandomBetweenFloat(-config.General.RayonSpawnX,config.General.RayonSpawnX))
+		vecx:=RandomBetweenFloat(-config.General.RayonSpawnX,config.General.RayonSpawnX)
+		vecy:=config.General.RayonSpawnX-vecx
+
 		p.PositionX+=vecx
 		p.PositionY+=vecy
+
 	}
 }
 

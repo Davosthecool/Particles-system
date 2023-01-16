@@ -12,13 +12,20 @@ func (g *game) Update() error {
 
 	if inpututil.IsKeyJustPressed(ebiten.KeyEscape){
 		config.General.Debug = !config.General.Debug
-		g.SelectMode = false
+		g.ReadMode = false
+		g.ReadHelp = false
 	}
 
 
 	if inpututil.IsKeyJustPressed(ebiten.KeyT){
-		g.ReadMode = !g.ReadMode
+		g.ReadMode =! g.ReadMode
 		print(g.Value)
+	}
+	
+	if inpututil.IsKeyJustPressed(ebiten.KeyH){
+		g.ReadHelp = !g.ReadHelp
+		g.ReadMode = false
+		config.General.Debug = false
 	}
 	if g.ReadMode{
 		g.Value += NumPressed()

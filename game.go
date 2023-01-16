@@ -14,4 +14,5 @@ type game struct {
 	Value string
 	ReadMode bool
 	SelectMode bool
+	ReadHelp bool
 }

@@ -29,7 +29,7 @@ type Config struct {
 	MinColorGreen,MaxColorGreen  		float64
 	MinScaleX, MaxScaleX         		float64
 	MinScaleY, MaxScaleY         		float64
-	ClickMouseSpawn,FollowMouseSpawn	bool
+	ClickMouseParticules,FollowMouseSpawn	bool
 	ClickSpawnRate               		float64
 	EffectExplosion              		bool
 	Bounce						 		bool
