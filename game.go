@@ -16,6 +16,7 @@ type game struct {
 	SelectMode bool
 	ReadHelp bool
 	LineSelected int
+	cache bool
 }
 
 type LineDraw struct{

@@ -39,7 +39,11 @@ func (g *game) Draw(screen *ebiten.Image) {
 	// 	ebitenutil.DebugPrintAt(screen, fmt.Sprint(e.NameValue,*e.Value),0,LineY)
 	// 	LineY+=20
 	// }
-	if config.General.Debug {
+
+
+	if g.cache{
+		ebitenutil.DebugPrint(screen, "")
+	} else if config.General.Debug {
 		ebitenutil.DebugPrintAt(screen,fmt.Sprint("Nombre de TPS  : ", ebiten.ActualTPS()), config.General.WindowSizeX-250, 0)
 		ebitenutil.DebugPrintAt(screen,fmt.Sprint("Nombre de FPS  : ", ebiten.ActualFPS()),  config.General.WindowSizeX-250, 15)
 		ebitenutil.DebugPrintAt(screen, fmt.Sprint("Nombres de particules : ",g.system.Content.Len()),config.General.WindowSizeX-250,30)
@@ -95,10 +99,13 @@ func (g *game) Draw(screen *ebiten.Image) {
 		ebitenutil.DebugPrintAt(screen,"Pour ajouter une lettre dans la phrase : 'Entrez une lettre pour ...', il suffit simplement d'appuyer sur la lettre du clavier pour que celle-ci apparaisse", 0, 140)
 		ebitenutil.DebugPrintAt(screen,"Pour enlever une lettre dans la phrase : 'Entrez une lettre pour ...', il suffit simplement d'appuyer sur la KeyBackspace situé à gauche de Ver Num pour l'enlever", 0, 160)
 
-		ebitenutil.DebugPrintAt(screen,"Si True, l'opacité de la partitule variera en fonction du Lifetime. Si False, elle variera en fonction de ChangeOpacity", 0, 190)
+		ebitenutil.DebugPrintAt(screen,"la touche Espace vous permet de cacher le menu de configuration", 0, 190)
+
 	}else{
 		ebitenutil.DebugPrint(screen,"Appuyez sur Echap pour voir/retirer le menu")
-		ebitenutil.DebugPrintAt(screen,"Appuyez sur H pour afficher le menu des commandes", 0, 30)
+		ebitenutil.DebugPrintAt(screen,"Appuyez sur H pour afficher l'aide ainsi que le menu des commandes", 0, 30)
+		ebitenutil.DebugPrintAt(screen,"Vous trouverez également des commentaires pour certaines propriétés directement dans le config.json", 0, 60)
+		ebitenutil.DebugPrintAt(screen,"Amusez-vous bien !", 0, 75)
 	}
 
 	if g.ReadMode{

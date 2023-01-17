@@ -23,6 +23,13 @@ func (g *game) Update() error {
 		config.General.Debug = false
 	}
 
+	
+	if inpututil.IsKeyJustPressed(ebiten.KeySpace){
+		g.cache = !g.cache
+		g.ReadMode = !g.ReadMode
+	}
+
+
 
 
 	if g.SelectMode && config.General.Debug{
@@ -258,6 +265,7 @@ func (g*game) lol(){
 		if inpututil.IsKeyJustPressed(ebiten.KeyKPAdd){
 				config.General.MaxScaleY += 0.1
 		}else if inpututil.IsKeyJustPressed(ebiten.KeyKPSubtract){
+			config.General.MaxScaleY -= 0.1
 		}
 	}
 }
@@ -316,7 +324,6 @@ func NumPressed() string{
 		return "1"
 	case inpututil.IsKeyJustPressed(ebiten.KeyNumpad2):
 		return "2"
-
 	}
 	return ""
 }

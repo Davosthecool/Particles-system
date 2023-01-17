@@ -6,28 +6,27 @@
 
 	"WindowSizeX": 1900,
     "WindowSizeY": 800,
-	"Kill_particule_WindowSizeX" : 50,
-	"Kill_particule_WindowSizeY" : 50,
-
+	"Kill_particule_WindowSizeX" : 0,
+	"Kill_particule_WindowSizeY" : 0,
 	"InitNumParticles": 0,
 
-	"TypeGenerateur" : 1,
+	"TypeGenerateur" : 0,
 	"CommentaireTypeGenerateur" : "-1 = RandomSpawn / 0 =  en forme de point / 1 = en forme de rectangle / 2 = en forme de cercle",
-	"SpawnRate": 1,
+	"SpawnRate": 0,
 	"SpawnX": 950,
 	"SpawnY": 400,
 	"RayonSpawnX" : 500,
 	"RayonSpawnY" : 200,
 	
 	"ClickMouseParticules" : true,
-	"ClickSpawnRate" : 15,
+	"ClickSpawnRate" : 10,
 	"FollowMouseSpawn" : false, 
 	"EffectExplosion" :  true, 
 	
-	"MaxVitesseX" : 0,
+	"MaxVitesseX" : 15,
 	"MaxVitesseY" : 0,
 	"GravityX" : 0,
-	"GravityY" : 0,
+	"GravityY" : 5,
 	"Bounce" : false,
 
 	"Lifetime" : 180,
@@ -40,10 +39,10 @@
 	"MaxColorRed" : 0.5,
 
 	"MinColorGreen" : 0.5,
-	"MaxColorGreen" : 0,
+	"MaxColorGreen" : 1,
 
 	"MinColorBlue" : 0,
-	"MaxColorBlue" : 0.5,
+	"MaxColorBlue" : 0.7,
 
 	"MinScaleX" : 1 ,
 	"MaxScaleX" : 1, 
