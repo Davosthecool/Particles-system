@@ -12,7 +12,7 @@
 	"InitNumParticles": 0,
 
 	"TypeGenerateur" : 1,
-	"CommentaireTypeGenerateur" : "-1 = RandomSpawn / 0 =  en forme de point / 1 = en forme de rectangle / 2 = en forme de cercle  / 3 = en forme de losange",
+	"CommentaireTypeGenerateur" : "-1 = RandomSpawn / 0 =  en forme de point / 1 = en forme de rectangle / 2 = en forme de cercle",
 	"SpawnRate": 1,
 	"SpawnX": 950,
 	"SpawnY": 400,

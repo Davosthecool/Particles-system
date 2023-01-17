@@ -41,18 +41,6 @@ func (s *System) newParticle() {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
 func (p *Particle) UpdateOpacity(){
 
 	if config.General.OpacityLifetime && config.General.Lifetime>0{

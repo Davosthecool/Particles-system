@@ -27,21 +27,10 @@ func (g *game) Update() error {
 
 	if g.SelectMode && config.General.Debug{
 		if ebiten.IsMouseButtonPressed(ebiten.MouseButtonLeft){
-			// posx, posy := ebiten.CursorPosition()
 			g.SelectMode = false
 		}
-		// if posx>0 && posx<100{
-
-		// }
 	}
-	// if inpututil.IsKeyJustPressed(ebiten.KeyE){
-	// 	g.ReadMode = !g.ReadMode
-	// 	if inpututil.IsKeyJustPressed(ebiten.KeyKPAdd){
-	// 		config.General.MaxVitesseX += 5.0
-	// 	}else{
-	// 		config.General.MaxVitesseX -= 5.0
-	// 	}
-	// }
+
 	g.lol()
 	
 	return nil
@@ -61,44 +50,56 @@ func (g*game) lol(){
 	g.test()
 	switch{
 
+	
 	case g.Value == "B":
 		if inpututil.IsKeyJustPressed(ebiten.KeyKPAdd){
-			config.General.InitNumParticles += 1
-		}else if inpututil.IsKeyJustPressed(ebiten.KeyKPSubtract){
-			config.General.InitNumParticles -= 1
-		}
-
-	case g.Value == "C":
-		if inpututil.IsKeyJustPressed(ebiten.KeyKPAdd){
-			if config.General.TypeGenerateur <= 3{
+			if config.General.TypeGenerateur < 2{
 				config.General.TypeGenerateur += 1
 			}
 		}else if inpututil.IsKeyJustPressed(ebiten.KeyKPSubtract){
-			if config.General.TypeGenerateur >= -1{
+			if config.General.TypeGenerateur > -1{
 				config.General.TypeGenerateur -= 1
 			}
 		}
 
-	case g.Value == "D1":
+	case g.Value == "C1":
 		if inpututil.IsKeyJustPressed(ebiten.KeyKPAdd){
 			config.General.SpawnX+= 1
 		}else if inpututil.IsKeyJustPressed(ebiten.KeyKPSubtract){
 			config.General.SpawnX -= 1
 		}
 
-	case g.Value == "D2":
+	case g.Value == "C2":
 		if inpututil.IsKeyJustPressed(ebiten.KeyKPAdd){
 			config.General.SpawnY+= 1
 		}else if inpututil.IsKeyJustPressed(ebiten.KeyKPSubtract){
 			config.General.SpawnY -= 1
 		}
 
-	case g.Value == "E":
-		if ebiten.IsKeyPressed(ebiten.KeyKPAdd){
-			config.General.SpawnRate += 0.1
-		}else if ebiten.IsKeyPressed(ebiten.KeyKPSubtract){
-			config.General.SpawnRate -= 0.1
+
+	case g.Value == "D1":
+		if inpututil.IsKeyJustPressed(ebiten.KeyKPAdd){
+			config.General.RayonSpawnX += 0.1
+		}else if inpututil.IsKeyJustPressed(ebiten.KeyKPSubtract){
+			config.General.RayonSpawnX -= 0.1
 		}
+
+
+	case g.Value == "D2":
+		if inpututil.IsKeyJustPressed(ebiten.KeyKPAdd){
+			config.General.RayonSpawnY += 0.1
+		}else if inpututil.IsKeyJustPressed(ebiten.KeyKPSubtract){
+			config.General.RayonSpawnY -= 0.1
+		}
+
+	case g.Value == "E":
+		if inpututil.IsKeyJustPressed(ebiten.KeyKPAdd){
+			config.General.SpawnRate += 1
+		}else if inpututil.IsKeyJustPressed(ebiten.KeyKPSubtract){
+			config.General.SpawnRate -= 1
+		}
+
+
 
 	case g.Value == "F":
 		if inpututil.IsKeyJustPressed(ebiten.KeyKPAdd){
@@ -130,50 +131,50 @@ func (g*game) lol(){
 
 	case g.Value == "K1":
 		if ebiten.IsKeyPressed(ebiten.KeyKPAdd){
-			config.General.MaxVitesseX += 0.1
+			config.General.MaxVitesseX += 0.2
 		}else if ebiten.IsKeyPressed(ebiten.KeyKPSubtract){
-			config.General.MaxVitesseX -= 0.1
+			config.General.MaxVitesseX -= 0.2
 		}
 
 	case g.Value == "K2":
-		if ebiten.IsKeyPressed(ebiten.KeyKPAdd){
-			config.General.MaxVitesseY += 0.1
-		}else if ebiten.IsKeyPressed(ebiten.KeyKPSubtract){
-			config.General.MaxVitesseY -= 0.1
+		if inpututil.IsKeyJustPressed(ebiten.KeyKPAdd){
+			config.General.MaxVitesseY += 0.2
+		}else if inpututil.IsKeyJustPressed(ebiten.KeyKPSubtract){
+			config.General.MaxVitesseY -= 0.2
 		}
 	case g.Value == "L1":
-		if ebiten.IsKeyPressed(ebiten.KeyKPAdd){
-			config.General.GravityX += 0.1
-		}else if ebiten.IsKeyPressed(ebiten.KeyKPSubtract){
-			config.General.GravityX -= 0.1
+		if inpututil.IsKeyJustPressed(ebiten.KeyKPAdd){
+			config.General.GravityX += 0.2
+		}else if inpututil.IsKeyJustPressed(ebiten.KeyKPSubtract){
+			config.General.GravityX -= 0.2
 		}
 
 	case g.Value == "L2":
-		if ebiten.IsKeyPressed(ebiten.KeyKPAdd){
-			config.General.GravityY += 0.1
-		}else if ebiten.IsKeyPressed(ebiten.KeyKPSubtract){
-			config.General.GravityY -= 0.1
+		if inpututil.IsKeyJustPressed(ebiten.KeyKPAdd){
+			config.General.GravityY += 0.2
+		}else if inpututil.IsKeyJustPressed(ebiten.KeyKPSubtract){
+			config.General.GravityY -= 0.2
 		}
 
-	case g.Value == "M1":
+	case g.Value == "X1":
 		if inpututil.IsKeyJustPressed(ebiten.KeyKPAdd){
-			config.General.Kill_particule_WindowSizeX += 1
+			config.General.Kill_particule_WindowSizeX += 5
 		}else if inpututil.IsKeyJustPressed(ebiten.KeyKPSubtract){
-			config.General.Kill_particule_WindowSizeX += 1
+			config.General.Kill_particule_WindowSizeX -=  5
 		}
 
-	case g.Value == "M2":
+	case g.Value == "X2":
 		if inpututil.IsKeyJustPressed(ebiten.KeyKPAdd){
-			config.General.Kill_particule_WindowSizeY += 1
+			config.General.Kill_particule_WindowSizeY += 5
 		}else if inpututil.IsKeyJustPressed(ebiten.KeyKPSubtract){
-			config.General.Kill_particule_WindowSizeY += 1
+			config.General.Kill_particule_WindowSizeY -=  5
 		}
 
 	case g.Value == "N":
-		if ebiten.IsKeyPressed(ebiten.KeyKPAdd){
-			config.General.Lifetime += 0.1
-		}else if ebiten.IsKeyPressed(ebiten.KeyKPSubtract){
-			config.General.Lifetime -= 0.1
+		if inpututil.IsKeyJustPressed(ebiten.KeyKPAdd){
+			config.General.Lifetime += 10
+		}else if inpututil.IsKeyJustPressed(ebiten.KeyKPSubtract){
+			config.General.Lifetime -= 10
 		}
 
 	case g.Value == "O":
@@ -186,35 +187,35 @@ func (g*game) lol(){
 	case g.Value == "P":
 		if inpututil.IsKeyJustPressed(ebiten.KeyKPAdd){
 			config.General.ChangeOpacity += 0.1
-		}else if inpututil.IsKeyJustPressed(ebiten.KeyKPAdd){
+		}else if inpututil.IsKeyJustPressed(ebiten.KeyKPSubtract){
 			config.General.ChangeOpacity -= 0.1
 		}
 
-	case g.Value == "Q1":
+	case g.Value == "Y1":
 		if inpututil.IsKeyJustPressed(ebiten.KeyKPAdd){
 			config.General.MinColorRed += 0.1
-		}else if inpututil.IsKeyJustPressed(ebiten.KeyKPAdd){
+		}else if inpututil.IsKeyJustPressed(ebiten.KeyKPSubtract){
 			config.General.MinColorRed -= 0.1
 		}
 
-	case g.Value == "Q2":
+	case g.Value == "Y2":
 		if inpututil.IsKeyJustPressed(ebiten.KeyKPAdd){
 			config.General.MaxColorRed += 0.1
-		}else if inpututil.IsKeyJustPressed(ebiten.KeyKPAdd){
+		}else if inpututil.IsKeyJustPressed(ebiten.KeyKPSubtract){
 			config.General.MaxColorRed -= 0.1
 		}
 
 	case g.Value == "R1":
 		if inpututil.IsKeyJustPressed(ebiten.KeyKPAdd){
 			config.General.MinColorGreen += 0.1
-		}else if inpututil.IsKeyJustPressed(ebiten.KeyKPAdd){
+		}else if inpututil.IsKeyJustPressed(ebiten.KeyKPSubtract){
 			config.General.MinColorGreen -= 0.1
 		}
 
 	case g.Value == "R2":
 		if inpututil.IsKeyJustPressed(ebiten.KeyKPAdd){
 			config.General.MaxColorGreen += 0.1
-		}else if inpututil.IsKeyJustPressed(ebiten.KeyKPAdd){
+		}else if inpututil.IsKeyJustPressed(ebiten.KeyKPSubtract){
 			config.General.MaxColorGreen -= 0.1
 		}
 
@@ -228,36 +229,35 @@ func (g*game) lol(){
 	case g.Value == "S2":
 		if inpututil.IsKeyJustPressed(ebiten.KeyKPAdd){
 			config.General.MaxColorBlue += 0.1
-		}else if inpututil.IsKeyJustPressed(ebiten.KeyKPAdd){
+		}else if inpututil.IsKeyJustPressed(ebiten.KeyKPSubtract){
 			config.General.MaxColorBlue -= 0.1
 		}
 
 	case g.Value == "U1":
 		if inpututil.IsKeyJustPressed(ebiten.KeyKPAdd){
 			config.General.MinScaleX += 0.1
-		}else if inpututil.IsKeyJustPressed(ebiten.KeyKPAdd){
+		}else if inpututil.IsKeyJustPressed(ebiten.KeyKPSubtract){
 			config.General.MinScaleX -= 0.1
 		}
 
 	case g.Value == "U2":
 		if inpututil.IsKeyJustPressed(ebiten.KeyKPAdd){
 			config.General.MaxScaleX += 0.1
-		}else if inpututil.IsKeyJustPressed(ebiten.KeyKPAdd){
+		}else if inpututil.IsKeyJustPressed(ebiten.KeyKPSubtract){
 			config.General.MaxScaleX -= 0.1
 		}
 
 	case g.Value == "V1":
 		if inpututil.IsKeyJustPressed(ebiten.KeyKPAdd){
 			config.General.MinScaleY += 0.1
-		}else if inpututil.IsKeyJustPressed(ebiten.KeyKPAdd){
+		}else if inpututil.IsKeyJustPressed(ebiten.KeyKPSubtract){
 			config.General.MinScaleY -= 0.1
 		}
 
 	case g.Value == "V2":
 		if inpututil.IsKeyJustPressed(ebiten.KeyKPAdd){
-			config.General.MaxScaleY += 0.1
-		}else if inpututil.IsKeyJustPressed(ebiten.KeyKPAdd){
-			config.General.MaxScaleY -= 0.1
+				config.General.MaxScaleY += 0.1
+		}else if inpututil.IsKeyJustPressed(ebiten.KeyKPSubtract){
 		}
 	}
 }
@@ -268,11 +268,8 @@ func (g*game) lol(){
 
 
 
-
 func NumPressed() string{
 	switch{
-	case inpututil.IsKeyJustPressed(ebiten.KeyA):
-		return "A"
 	case inpututil.IsKeyJustPressed(ebiten.KeyB):
 		return "B"
 	case inpututil.IsKeyJustPressed(ebiten.KeyC):
@@ -293,16 +290,18 @@ func NumPressed() string{
 		return "J"
 	case inpututil.IsKeyJustPressed(ebiten.KeyK):
 		return "K"
-	case inpututil.IsKeyJustPressed(ebiten.KeyM):
-		return "M"
+	case inpututil.IsKeyJustPressed(ebiten.KeyL):
+		return "L"
+	case inpututil.IsKeyJustPressed(ebiten.KeyX):
+		return "X"
 	case inpututil.IsKeyJustPressed(ebiten.KeyN):
 		return "N"
 	case inpututil.IsKeyJustPressed(ebiten.KeyO):
 		return "O"
 	case inpututil.IsKeyJustPressed(ebiten.KeyP):
 		return "P"
-	case inpututil.IsKeyJustPressed(ebiten.KeyQ):
-		return "Q"
+	case inpututil.IsKeyJustPressed(ebiten.KeyY):
+		return "Y"
 	case inpututil.IsKeyJustPressed(ebiten.KeyR):
 		return "R"
 	case inpututil.IsKeyJustPressed(ebiten.KeyS):
@@ -313,10 +312,9 @@ func NumPressed() string{
 		return "U"
 	case inpututil.IsKeyJustPressed(ebiten.KeyV):
 		return "V"
-	case inpututil.IsKeyJustPressed(ebiten.Key1):
+	case inpututil.IsKeyJustPressed(ebiten.KeyNumpad1):
 		return "1"
-	
-	case inpututil.IsKeyJustPressed(ebiten.Key2):
+	case inpututil.IsKeyJustPressed(ebiten.KeyNumpad2):
 		return "2"
 
 	}
