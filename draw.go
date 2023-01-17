@@ -94,6 +94,8 @@ func (g *game) Draw(screen *ebiten.Image) {
 
 		ebitenutil.DebugPrintAt(screen,"Pour ajouter une lettre dans la phrase : 'Entrez une lettre pour ...', il suffit simplement d'appuyer sur la lettre du clavier pour que celle-ci apparaisse", 0, 140)
 		ebitenutil.DebugPrintAt(screen,"Pour enlever une lettre dans la phrase : 'Entrez une lettre pour ...', il suffit simplement d'appuyer sur la KeyBackspace situé à gauche de Ver Num pour l'enlever", 0, 160)
+
+		ebitenutil.DebugPrintAt(screen,"Si True, l'opacité de la partitule variera en fonction du Lifetime. Si False, elle variera en fonction de ChangeOpacity", 0, 190)
 	}else{
 		ebitenutil.DebugPrint(screen,"Appuyez sur Echap pour voir/retirer le menu")
 		ebitenutil.DebugPrintAt(screen,"Appuyez sur H pour afficher le menu des commandes", 0, 30)

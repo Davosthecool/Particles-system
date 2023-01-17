@@ -25,15 +25,10 @@ func (s *System) Update() {
 		}
 		config.General.SpawnX,config.General.SpawnY=oldspawnx,oldspawny
 	}
-
+	 
 	if ebiten.IsMouseButtonPressed(ebiten.MouseButtonRight) && !OutOfKillScreen(float64(posx),float64(posy)){
 		config.General.SpawnX,config.General.SpawnY= ebiten.CursorPosition()
 	}
-
-	// if config.General.Explosion_Spawn && ebiten.IsMouseButtonPressed(ebiten.MouseButtonRight){
-		
-		
-	// }
 
 
 
@@ -48,6 +43,8 @@ func (s *System) Update() {
 		if config.General.Bounce{
 			p.WallBounce()
 		}
+
+
 		p.PositionX += p.VitesseX
 		p.PositionY += p.VitesseY
 
@@ -56,7 +53,6 @@ func (s *System) Update() {
 		p.VitesseY+= config.General.GravityY
 
 		p.Lifetime--
-
 		p.UpdateOpacity()
 
 		next := element.Next()

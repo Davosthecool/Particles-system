@@ -88,3 +88,8 @@ func RandomVecteur(l float64) (x,y float64){
 	y=math.Sqrt(Abs(math.Pow(x,2)-math.Pow(l,2)))
 	return x*RandomChoice(negate),y*RandomChoice(negate)
 }
+
+func NegaOrPosa()float64{
+	negate:=[]float64{1.0,-1.0}
+	return RandomChoice(negate)
+}

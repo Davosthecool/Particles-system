@@ -10,7 +10,6 @@ func (s *System) newParticle() {
 	newParticule := Particle{
 		PositionX: float64(config.General.SpawnX),
 		PositionY: float64(config.General.SpawnY),
-		Rotation: 0,
 
 		ScaleX: RandomBetweenFloat(config.General.MinScaleX, config.General.MaxScaleX), 
 		ScaleY: RandomBetweenFloat(config.General.MinScaleY, config.General.MaxScaleY),

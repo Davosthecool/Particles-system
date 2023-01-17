@@ -1,8 +1,10 @@
-package particles 
+package particles
 
-import ("testing"
-	"project-particles/config"
+import (
+	// "container/list"
 	"math/rand"
+	"project-particles/config"
+	"testing"
 )
 
 //Tests concernant le fichier new.go
@@ -70,7 +72,7 @@ func TestParticleVitesseMax(t *testing.T) {
 	config.Get("../config.json")
 	config.General.InitNumParticles = rand.Intn(100)
 	for element := NewSystem().Content.Front() ; element != nil ; element = element.Next(){		
-		if abs(element.Value.(*Particle).VitesseX) > config.General.MaxVitesseX || abs(element.Value.(*Particle).VitesseY) > config.General.MaxVitesseY{
+		if Abs(element.Value.(*Particle).VitesseX) > config.General.MaxVitesseX || Abs(element.Value.(*Particle).VitesseY) > config.General.MaxVitesseY{
 			t.Error("La vitesse de la particule est plus rapide que la vitesse maximale autorisée")
 			break
 		}
@@ -149,12 +151,35 @@ func TestUpdateParticleSpawnInt(t *testing.T){
 }
 
 
-
-//Fonction permettant de mettre un float64 en absolue (entièrement positif)
-
-func abs(a float64) float64{
-	if a <0{
-		return a*-1
+func TestOutParticule(t *testing.T){
+	config.Get("../config.json")
+	sys := NewSystem()
+	config.General.WindowSizeX = 800 
+	config.General.WindowSizeY = 600
+	config.General.Kill_particule_WindowSizeX = float64(rand.Intn(100))*NegaOrPosa()
+	for element := sys.Content.Front() ; element != nil ; element = element.Next(){
+		posx:=element.Value.(*Particle).PositionX 
+		posy:=element.Value.(*Particle).PositionY
+		sys.Update()
+		if posx > float64(config.General.WindowSizeX) + config.General.Kill_particule_WindowSizeX || posy > float64(config.General.WindowSizeY) +config.General.Kill_particule_WindowSizeY{
+			t.Error("Une particule a réussi à se situer dans la kill_particule_zone !")
+			break
+		}
 	}
-	return a
 }
+
+
+func LifetimeParticule(t *testing.T){
+	config.Get("../config.json")
+	sys := NewSystem()
+	for element := sys.Content.Front() ; element != nil ; element = element.Next(){
+		LifeParticule := element.Value.(*Particle).Lifetime
+		LifeParticule--
+		sys.Update()
+		if LifeParticule <= 0 && element != nil{
+			t.Error("La particule ne comporte plus de vie. Pourtant, elle se situe encore dans votre liste !")
+		} 	
+	}
+}
+
+func LifetimeParticule(t *testing.T){}
