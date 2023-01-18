@@ -24,11 +24,11 @@
 	"FollowMouseSpawn" : false, 
 	"EffectExplosion" :  true, 
 	
-	"MaxVitesseX" : 15,
-	"MaxVitesseY" : 0,
-	"GravityX" : 0,
-	"GravityY" : 5,
-	"Bounce" : false,
+	"MaxVitesseX" : 10,
+	"MaxVitesseY" : 5,
+	"GravityX" : 2,
+	"GravityY" : 2,
+	"Bounce" : true,
 
 	"Lifetime" : 180,
 	"OpacityLifetime" : true ,

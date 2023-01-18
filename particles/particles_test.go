@@ -178,6 +178,7 @@ func LifetimeParticule(t *testing.T){
 		sys.Update()
 		if LifeParticule <= 0 && element != nil{
 			t.Error("La particule ne comporte plus de vie. Pourtant, elle se situe encore dans votre liste !")
+			break
 		} 	
 	}
 }
@@ -196,9 +197,11 @@ func TestBounceWithoutKillZone(t *testing.T){
 		sys.Update()
 		if posx > config.General.Kill_particule_WindowSizeX && vitx != -vitx {
 			t.Error("Vos particules ne rebondissent pas sur le bord haut et bas de l'écran ")
+			break
 		}
 		if posy > config.General.Kill_particule_WindowSizeY && vity!= -vity {
 			t.Error("Vos particules ne rebondissent pas sur le bord gauche et droit de l'écran ")
+			break
 		}
 	}
 
@@ -222,12 +225,33 @@ func TestBounceWithKillZone(t *testing.T){
 		sys.Update()
 		if (posx < -config.General.Kill_particule_WindowSizeX || posx> float64(config.General.WindowSizeX)+config.General.Kill_particule_WindowSizeX) && vitx != -vitx {
 			t.Error("Vos particules ne rebondissent pas sur le bord haut et bas de la kill zone paramétré à ", config.General.Kill_particule_WindowSizeX ,"et", config.General.Kill_particule_WindowSizeY)
+			break
 		}
 		if (posy < -config.General.Kill_particule_WindowSizeY || posy> float64(config.General.WindowSizeY)+config.General.Kill_particule_WindowSizeY) && vity!= -vity {
 			t.Error("Vos particules ne rebondissent pas sur le bord gauche et droit de la kill zone paramétré à ", config.General.Kill_particule_WindowSizeX ,"et", config.General.Kill_particule_WindowSizeY)
+			break
 		}
 	}
 
 }
 
 
+func TestGravity(t *testing.T){
+	config.Get("../config.json")
+	sys := NewSystem()
+	config.General.GravityX =  float64(rand.Intn(100))*NegaOrPosa()
+	config.General.GravityY = float64(rand.Intn(100))*NegaOrPosa()
+	for element := sys.Content.Front() ; element != nil ; element = element.Next(){
+		vitx:=element.Value.(*Particle).VitesseX
+		vity:=element.Value.(*Particle).VitesseY
+		sys.Update()
+		if vitx == vitx + config.General.GravityX  {
+			t.Error("La Gravité X ne semble pas fonctionner sur votre particule !")
+			break
+		}
+		if vity == vity + config.General.GravityY{
+			t.Error("La Gravité Y  ne semble pas fonctionner sur votre particule !")
+			break
+		}
+	}
+}

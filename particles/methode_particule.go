@@ -46,7 +46,7 @@ func (p *Particle)WallBounce(){
 
 
 
-//crée une valeur random de spawn , on crée les bords de notre zone de spawn. Si les bords de notre zone de spawn dépasse les bornes de la killzone alors on les rétrécit pour les rentrer dedans.
+//On choisit le typedeGénérateur que nous souhaitons parmi les choix proposés.
 func (p *Particle) SetSpawn(){
 
 	//Si le TypeGenerateur est -1 depuis config.json alors chaque particule aura une position différente sur les axes X et Y comprise entre 0 et la valeur défini dans WindowSizeX et WindowSizeY

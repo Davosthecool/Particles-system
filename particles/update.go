@@ -63,32 +63,16 @@ func (s *System) Update() {
 		p.Lifetime--
 		p.UpdateOpacity()
 
+		next := element.Next()
+
+		
 		// Si la particule est en dehors de la killzoneparticule  ou que celle-ci comporte une durée de vie initiale à 0 alors celle-ci sera supprimée de la liste du ssystème.
 		//Cette suppression vaut également si la particule n'a plus de durée de vie ou si son opacité est à zero.
 		//Ceci correspond ainsi à l'optimisation mémoire de notre projet.
 		if (element.Value.(*Particle)).OutOfScreen()|| p.Lifetime <= 0 && config.General.Lifetime>0 || p.Opacity<=0{
 			s.Content.Remove(element)
 		}
-
-		// if config.General.EffectExplosion && ebiten.IsMouseButtonPressed(ebiten.MouseButtonMiddle){
-		// 	posx,posy :=ebiten.CursorPosition()	
-		// 	ecart_x,ecart_y := Vecteur(p.PositionX,p.PositionY,float64(posx),float64(posy))
-		// 	if ecart_x <50 && ecart_y<50{
-		// 		if float64(posx)>p.PositionX{
-		// 			p.VitesseX-= 0.1*ecart_x
-		// 		}
-		// 		if float64(posx)<p.PositionX{
-		// 			p.VitesseX+= 0.1*ecart_x
-		// 		}
-		// 		if float64(posy)>p.PositionY{
-		// 			p.VitesseY-= 0.1*ecart_y
-		// 		}else{
-		// 			p.VitesseY+= 0.1*ecart_y
-		// 		}
-		// 	}
-		// }
-	
-		element = element.Next()
+		element = next
 	}
 
 
