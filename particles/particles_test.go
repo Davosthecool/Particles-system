@@ -242,14 +242,16 @@ func TestGravity(t *testing.T){
 	config.General.GravityX =  float64(rand.Intn(100))*NegaOrPosa()
 	config.General.GravityY = float64(rand.Intn(100))*NegaOrPosa()
 	for element := sys.Content.Front() ; element != nil ; element = element.Next(){
+		posx:=element.Value.(*Particle).PositionX 
+		posy:=element.Value.(*Particle).PositionY
 		vitx:=element.Value.(*Particle).VitesseX
 		vity:=element.Value.(*Particle).VitesseY
 		sys.Update()
-		if config.General.GravityX > 0 && vitx == vitx + config.General.GravityX  {
+		if config.General.GravityX > 0 && posx + (vitx + config.General.GravityX) != posx {
 			t.Error("La Gravité X ne semble pas fonctionner sur votre particule !")
 			break
 		}
-		if config.General.GravityY > 0 && vity == vity + config.General.GravityY{
+		if config.General.GravityY > 0 && posy + (vity + config.General.GravityY) != posy {
 			t.Error("La Gravité Y  ne semble pas fonctionner sur votre particule !")
 			break
 		}
