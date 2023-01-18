@@ -29,7 +29,11 @@ func (g *game) Update() error {
 	//Réappuyez dessus et le menu sera de nouveau visible.
 	if inpututil.IsKeyJustPressed(ebiten.KeySpace){
 		g.cache = !g.cache
-		g.ReadMode = !g.ReadMode
+		if g.cache{
+			g.ReadMode = false
+		} else {
+			g.ReadMode = true
+		}
 	}
 
 	g.Ajout_Lettre_Champs()
