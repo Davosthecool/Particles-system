@@ -187,8 +187,8 @@ func TestBounceWithoutKillZone(t *testing.T){
 	config.Get("../config.json")
 	sys := NewSystem()
 	config.General.Bounce = true 
-	config.General.WindowSizeX = (rand.Intn(800))
-	config.General.WindowSizeY = (rand.Intn(800))
+	config.General.Kill_particule_WindowSizeX = float64(rand.Intn(800))
+	config.General.Kill_particule_WindowSizeY = float64(rand.Intn(800))
 	for element := sys.Content.Front() ; element != nil ; element = element.Next(){
 		posx:=element.Value.(*Particle).PositionX 
 		posy:=element.Value.(*Particle).PositionY
