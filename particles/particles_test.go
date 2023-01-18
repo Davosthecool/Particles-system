@@ -176,7 +176,7 @@ func LifetimeParticule(t *testing.T){
 		LifeParticule := element.Value.(*Particle).Lifetime
 		LifeParticule--
 		sys.Update()
-		if LifeParticule <= 0 && element != nil{
+		if config.General.OpacityLifetime && LifeParticule <= 0 && element != nil{
 			t.Error("La particule ne comporte plus de vie. Pourtant, elle se situe encore dans votre liste !")
 			break
 		} 	
@@ -245,12 +245,28 @@ func TestGravity(t *testing.T){
 		vitx:=element.Value.(*Particle).VitesseX
 		vity:=element.Value.(*Particle).VitesseY
 		sys.Update()
-		if vitx == vitx + config.General.GravityX  {
+		if config.General.GravityX > 0 && vitx == vitx + config.General.GravityX  {
 			t.Error("La Gravité X ne semble pas fonctionner sur votre particule !")
 			break
 		}
-		if vity == vity + config.General.GravityY{
+		if config.General.GravityY > 0 && vity == vity + config.General.GravityY{
 			t.Error("La Gravité Y  ne semble pas fonctionner sur votre particule !")
+			break
+		}
+	}
+}
+
+
+func TestChangeOpacity(t *testing.T){
+	config.Get("../config.json")
+	sys := NewSystem()
+	for element := sys.Content.Front() ; element != nil ; element = element.Next(){
+		OpacityParticule:=element.Value.(*Particle).Opacity
+		BaseOpacityParticule:=element.Value.(*Particle).Base_Opacity
+		LifeParticule := element.Value.(*Particle).Lifetime
+		sys.Update()
+		if !config.General.OpacityLifetime && OpacityParticule == BaseOpacityParticule/LifeParticule{
+			t.Error("L'opacité de vos partiules ne diminuent pas !")
 			break
 		}
 	}
