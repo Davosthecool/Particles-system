@@ -8,6 +8,7 @@
     "WindowSizeY": 800,
 	"Kill_particule_WindowSizeX" : 0,
 	"Kill_particule_WindowSizeY" : 0,
+	"CommentaireKill_Particule" : "Si vous mettez une valeur négative alors la zone de propagation de particules diminuera en fonction de celle-ci",
 	"InitNumParticles": 0,
 
 	"TypeGenerateur" : 0,

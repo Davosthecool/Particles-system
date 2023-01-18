@@ -11,11 +11,14 @@ import (
 
 
 func (s *System) Update() {
+
+	//Si le FollowMouse est activé alors le point de spawn des particules sera défini en fonctions des positions X et Y du curseur de la souris.
 	if config.General.FollowMouseSpawn{
 		config.General.SpawnX,config.General.SpawnY= ebiten.CursorPosition()
 	}
 
-
+	//Ce bout de code vous permet de faire apparaître un certain nombre de particules (ClickSpawnRate) grâce au clic gauche de la souris
+	//Celui-ci est actif que si vous avez ms true l'extension "ClickMouseParticules" et que les positions du cursor de la souris se situent bien dans la zone "vivable"
 	posx,posy :=ebiten.CursorPosition()
 	oldspawnx,oldspawny:=config.General.SpawnX,config.General.SpawnY
 	if config.General.ClickMouseParticules && ebiten.IsMouseButtonPressed(ebiten.MouseButtonLeft) && !OutOfKillScreen(float64(posx),float64(posy)){
@@ -26,6 +29,9 @@ func (s *System) Update() {
 		config.General.SpawnX,config.General.SpawnY=oldspawnx,oldspawny
 	}
 	 
+
+
+	//Si le clic droit de la suouris est appuyée alors le point de spawn des particules changera en fonction des positions du curseur de la souris.
 	if ebiten.IsMouseButtonPressed(ebiten.MouseButtonRight) && !OutOfKillScreen(float64(posx),float64(posy)){
 		config.General.SpawnX,config.General.SpawnY= ebiten.CursorPosition()
 	}
@@ -39,47 +45,50 @@ func (s *System) Update() {
 
 		p, _ := element.Value.(*Particle)
 
-		//ccccc
+		//Si l'extension "Bounce" est activée alors cela déclenchera cette méthode qui inverse les vitesses.
 		if config.General.Bounce{
-			WallBounce(p)
+			p.WallBounce()
 		}
 
-
+		//Nous ajoutons la vitesseX et vitesseY avec les positions de la particule(catactérisée par element) afin que celle-ci bouge.
 		p.PositionX += p.VitesseX
 		p.PositionY += p.VitesseY
 
-
+		//Nous ajoutons la GravitéX et GravitéY avec les vitesses de la particule(catactérisée par element) afin que celle-ci s'oriente en fonction de la vitesse.
 		p.VitesseX+= config.General.GravityX 
 		p.VitesseY+= config.General.GravityY
 
+		//La particule perd de sa vie à chaque appel de la fonction update.
+		//La fonction UpdateOpacity permet de choisir la durée de vie entre le lifetime et l'opacité (en fonction du choix de l'utilisateur)
 		p.Lifetime--
 		p.UpdateOpacity()
 
-		next := element.Next()
-
-		if OutOfScreen(element.Value.(*Particle)) || p.Lifetime <= 0 && config.General.Lifetime>0 || p.Opacity<=0{
+		// Si la particule est en dehors de la killzoneparticule  ou que celle-ci comporte une durée de vie initiale à 0 alors celle-ci sera supprimée de la liste du ssystème.
+		//Cette suppression vaut également si la particule n'a plus de durée de vie ou si son opacité est à zero.
+		//Ceci correspond ainsi à l'optimisation mémoire de notre projet.
+		if (element.Value.(*Particle)).OutOfScreen()|| p.Lifetime <= 0 && config.General.Lifetime>0 || p.Opacity<=0{
 			s.Content.Remove(element)
 		}
 
-		if config.General.EffectExplosion && ebiten.IsMouseButtonPressed(ebiten.MouseButtonMiddle){
-			posx,posy :=ebiten.CursorPosition()	
-			ecart_x,ecart_y := Vecteur(p.PositionX,p.PositionY,float64(posx),float64(posy))
-			if ecart_x <50 && ecart_y<50{
-				if float64(posx)>p.PositionX{
-					p.VitesseX-= 0.1*ecart_x
-				}
-				if float64(posx)<p.PositionX{
-					p.VitesseX+= 0.1*ecart_x
-				}
-				if float64(posy)>p.PositionY{
-					p.VitesseY-= 0.1*ecart_y
-				}else{
-					p.VitesseY+= 0.1*ecart_y
-				}
-			}
-		}
+		// if config.General.EffectExplosion && ebiten.IsMouseButtonPressed(ebiten.MouseButtonMiddle){
+		// 	posx,posy :=ebiten.CursorPosition()	
+		// 	ecart_x,ecart_y := Vecteur(p.PositionX,p.PositionY,float64(posx),float64(posy))
+		// 	if ecart_x <50 && ecart_y<50{
+		// 		if float64(posx)>p.PositionX{
+		// 			p.VitesseX-= 0.1*ecart_x
+		// 		}
+		// 		if float64(posx)<p.PositionX{
+		// 			p.VitesseX+= 0.1*ecart_x
+		// 		}
+		// 		if float64(posy)>p.PositionY{
+		// 			p.VitesseY-= 0.1*ecart_y
+		// 		}else{
+		// 			p.VitesseY+= 0.1*ecart_y
+		// 		}
+		// 	}
+		// }
 	
-		element = next
+		element = element.Next()
 	}
 
 
@@ -87,7 +96,7 @@ func (s *System) Update() {
 	
 	//Ce bout de code permet de générer un nombre de particules, défini par SpawRate dans config.json, par seconde.
 	//La boucle permet ainsi de créer ce nombre de particule grâce à la méthode newParticle (présente dans particle.go)
-	// **Mettre ligne pour OutofKillScreen
+	//Toutefois, afin d'éviter qu'une particule se situé dans une zone killparticule , leOutofKillScreen doit renvoyer une valeur false.
 	s.SpawnRate+=config.General.SpawnRate
 	if !OutOfKillScreen(float64(config.General.SpawnX),float64(config.General.SpawnY)){
 		for i:=0; i< int(s.SpawnRate); i++{

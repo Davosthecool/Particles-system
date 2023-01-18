@@ -13,6 +13,9 @@ import (
 // g.system. Elle est appelée automatiquement environ 60 fois par seconde par
 // la bibliothèque Ebiten. Cette fonction pourra être légèrement modifiée quand
 // c'est précisé dans le sujet.
+
+
+//Cette méthode permet d'afficher la particule dans l'interface en mettant correctement les caractéristiques choisis par l'utilisateur.
 func (g *game) Draw(screen *ebiten.Image) {
 	for e := g.system.Content.Front(); e != nil; e = e.Next() {
 		p, ok := e.Value.(*particles.Particle)
@@ -25,21 +28,11 @@ func (g *game) Draw(screen *ebiten.Image) {
 			screen.DrawImage(assets.ParticleImage, &options)
 		}
 	}
-	// var ListeLignes []LineDraw
 
-	// ListeLignes = append(ListeLignes,LineDraw{1,"WindowSizeX :",&config.General.WindowSizeX})
-	// ListeLignes = append(ListeLignes,LineDraw{2,"WindowSizeY :",&config.General.WindowSizeY})
-	// var LineY int
-	// if config.General.Debug {
-	// ebitenutil.DebugPrintAt(screen,fmt.Sprint("Nombre de TPS  : ", ebiten.ActualTPS()), config.General.WindowSizeX-250, 0)
-	// ebitenutil.DebugPrintAt(screen,fmt.Sprint("Nombre de FPS  : ", ebiten.ActualFPS()),  config.General.WindowSizeX-250, 15)
-	// ebitenutil.DebugPrintAt(screen, fmt.Sprint("Nombres de particules : ",g.system.Content.Len()),config.General.WindowSizeX-250,30)
-	
-	// for _,e := range(ListeLignes){
-	// 	ebitenutil.DebugPrintAt(screen, fmt.Sprint(e.NameValue,*e.Value),0,LineY)
-	// 	LineY+=20
-	// }
 
+	//Tout le code qui suit permet de mettre en forme l'interface en y incorporant les différentes extensions mais également leurs emplacements.
+	// La boucle permet de faire en sorte de n'afficher qu'un menu à la fois et non les 3 en même temps.
+	//Vous pouvez ainsi y retrouver les lettres associées aux différents paramètres !
 
 	if g.cache{
 		ebitenutil.DebugPrint(screen, "")
@@ -100,6 +93,8 @@ func (g *game) Draw(screen *ebiten.Image) {
 		ebitenutil.DebugPrintAt(screen,"Pour enlever une lettre dans la phrase : 'Entrez une lettre pour ...', il suffit simplement d'appuyer sur la KeyBackspace situé à gauche de Ver Num pour l'enlever", 0, 160)
 
 		ebitenutil.DebugPrintAt(screen,"la touche Espace vous permet de cacher le menu de configuration une fois dedans ", 0, 190)
+		
+		ebitenutil.DebugPrintAt(screen,	"Si vous mettez une valeur négative dans les champs Kill_particule alors la zone de propagation de particules diminuera en fonction de celle-ci", 0, 210)
 
 	}else{
 		ebitenutil.DebugPrint(screen,"Appuyez sur Echap pour voir/retirer le menu")

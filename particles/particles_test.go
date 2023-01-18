@@ -204,9 +204,30 @@ func TestBounceWithoutKillZone(t *testing.T){
 
 }
 
-// case posx < -config.General.Kill_particule_WindowSizeX || posx> float64(config.General.WindowSizeX)+config.General.Kill_particule_WindowSizeX:
-// 	p.VitesseX*=-1
-// case posy < -config.General.Kill_particule_WindowSizeY || posy> float64(config.General.WindowSizeY)+config.General.Kill_particule_WindowSizeY:
-// 	p.VitesseY*=-1	
-// }
-// }
+
+
+func TestBounceWithKillZone(t *testing.T){
+	config.Get("../config.json")
+	sys := NewSystem()
+	config.General.Bounce = true 
+	config.General.WindowSizeX = (rand.Intn(800))
+	config.General.WindowSizeY = (rand.Intn(800))
+	config.General.Kill_particule_WindowSizeX = float64(rand.Intn(800))
+	config.General.Kill_particule_WindowSizeY = float64(rand.Intn(800))
+	for element := sys.Content.Front() ; element != nil ; element = element.Next(){
+		posx:=element.Value.(*Particle).PositionX 
+		posy:=element.Value.(*Particle).PositionY
+		vitx:=element.Value.(*Particle).VitesseX
+		vity:=element.Value.(*Particle).VitesseY
+		sys.Update()
+		if (posx < -config.General.Kill_particule_WindowSizeX || posx> float64(config.General.WindowSizeX)+config.General.Kill_particule_WindowSizeX) && vitx != -vitx {
+			t.Error("Vos particules ne rebondissent pas sur le bord haut et bas de la kill zone paramétré à ", config.General.Kill_particule_WindowSizeX ,"et", config.General.Kill_particule_WindowSizeY)
+		}
+		if (posy < -config.General.Kill_particule_WindowSizeY || posy> float64(config.General.WindowSizeY)+config.General.Kill_particule_WindowSizeY) && vity!= -vity {
+			t.Error("Vos particules ne rebondissent pas sur le bord gauche et droit de la kill zone paramétré à ", config.General.Kill_particule_WindowSizeX ,"et", config.General.Kill_particule_WindowSizeY)
+		}
+	}
+
+}
+
+

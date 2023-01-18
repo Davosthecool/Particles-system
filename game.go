@@ -1,7 +1,6 @@
 package main
 
 import ("project-particles/particles"
-		// "github.com/hajimehoshi/ebiten/v2"
 	)
 
 // game est un type qui implémente l'interface Game de la bibliothèque Ebiten
@@ -19,9 +18,3 @@ type game struct {
 	cache bool
 }
 
-type LineDraw struct{
-	NumLine int
-	NameValue string
-	Value *int
-	
-}

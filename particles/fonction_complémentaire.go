@@ -7,7 +7,7 @@ import("math/rand"
 
 
 
-
+//Fontion permettant de mettre un nombre en absolue (toujours positifs)
 func Abs(x float64) float64{
 	if x<0{
 		return -x
@@ -15,6 +15,7 @@ func Abs(x float64) float64{
 	return x
 }
 
+//Fonction permettant de choisir un nombre aléatoire non décimal entre x et y.
 func RandomBetweenInt(x, y int) int{
 	if x==y{
 		return y
@@ -25,6 +26,7 @@ func RandomBetweenInt(x, y int) int{
 	return rand.Intn(y-x) + x
 }
 
+//Fonction permettant de choisir un nombre aléatoire  décimal entre x et y.
 func RandomBetweenFloat(x, y float64) float64{
 	if x==y{
 		return y
@@ -35,6 +37,8 @@ func RandomBetweenFloat(x, y float64) float64{
 	return rand.Float64()*(y-x)+x
 }
 
+
+//Fonction permettant de choisir un nombre aléatoire entre 1 et -1 .
 func RandomChoice(l []float64) float64{
 	return l[rand.Intn(len(l))]
 }
@@ -50,6 +54,8 @@ func Vecteur(x1, y1, x2, y2 float64) (xfinal, yfinal float64){
 	return xfinal, yfinal
 }
 
+
+//Fonction permettant de choisir le signe que nous souhaitons multiplier (si -1 alors lamultiplication de celui-ci avec un autre nombre permettra à celui-ci d'être négatif).
 func RandomVecteur(l float64) (x,y float64){
 	negate:=[]float64{1.0,-1.0}
 	x=RandomBetweenFloat(0,l)
@@ -57,6 +63,7 @@ func RandomVecteur(l float64) (x,y float64){
 	return x*RandomChoice(negate),y*RandomChoice(negate)
 }
 
+//Fonction permettant de choisir le signe que nous souhaitons multiplier (si -1 alors lamultiplication de celui-ci avec un autre nombre permettra à celui-ci d'être négatif).
 func NegaOrPosa()float64{
 	negate:=[]float64{1.0,-1.0}
 	return RandomChoice(negate)

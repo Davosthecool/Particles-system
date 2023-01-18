@@ -11,39 +11,36 @@ import("github.com/hajimehoshi/ebiten/v2/inpututil"
 func (g *game) Update() error {
 	g.system.Update()
 
+	//Si la touche Echap est appuyé alors le menu des configuration apparaitra, vous permettant ainsi de mchoisir ce que vous souhaitez mettre ou enlever.
 	if inpututil.IsKeyJustPressed(ebiten.KeyEscape){
 		g.ReadMode = true
 		config.General.Debug = !config.General.Debug
 		g.ReadHelp = false
 	}
-
+	//Si la touche H est appuyé alors le menu d'aide ainsi que des commandes apparaitra.
+	//Cela cahcera également le menu de configuration ainsi que la page d'accueil .
 	if inpututil.IsKeyJustPressed(ebiten.KeyH){
 		g.ReadHelp = !g.ReadHelp
 		g.ReadMode = false
 		config.General.Debug = false
 	}
 
-	
+	//Si la touche Espacee est appuyé alors le menu des configuration sera caché, vous permettant ainsi de mieux voir le résultat de vos particules.
+	//Réappuyez dessus et le menu sera de nouveau visible.
 	if inpututil.IsKeyJustPressed(ebiten.KeySpace){
 		g.cache = !g.cache
 		g.ReadMode = !g.ReadMode
 	}
 
-
-
-
-	if g.SelectMode && config.General.Debug{
-		if ebiten.IsMouseButtonPressed(ebiten.MouseButtonLeft){
-			g.SelectMode = false
-		}
-	}
-
-	g.lol()
+	g.Ajout_Lettre_Champs()
 	
 	return nil
 }
 
-func (g *game) test()string{
+
+//Cette méthode permet de rendre les lettres que vous atperez visible dans le champs de texte du choix d'une lettre
+//Celle-ci vous donne également la possibilité de supprimer la lettre si vous appuyez sur la touche défini et qu'au moins une lettre soit affiché.
+func (g *game) Ecriture_Lettre()string{
 	if g.ReadMode{
 		g.Value += NumPressed()
 		if inpututil.IsKeyJustPressed(ebiten.KeyBackspace) && len(g.Value)>0{
@@ -53,11 +50,13 @@ func (g *game) test()string{
 	return g.Value
 }
 
-func (g*game) lol(){
-	g.test()
+//Cette méthode permet de pouvoir changer les paramètres que l'on souhaite en fonction de la lettre insérée.
+//Chaque fonctionnalité comporte une lettre qui lui est associée (elles sont à côté de celles-ci).
+func (g*game) Ajout_Lettre_Champs(){
+	g.Ecriture_Lettre()
 	switch{
 
-	
+	//Cette confition comporte une limite car nous ne voulons afficher que des chiffres compris entre -1 et 2.
 	case g.Value == "B":
 		if inpututil.IsKeyJustPressed(ebiten.KeyKPAdd){
 			if config.General.TypeGenerateur < 2{
@@ -272,10 +271,7 @@ func (g*game) lol(){
 	
 
 
-
-
-
-
+//Cette fonction permet de renvoyer un string de la lettre que vous avez choisi dans g.Value(champs dans lequel vous choississez votre lettre)
 func NumPressed() string{
 	switch{
 	case inpututil.IsKeyJustPressed(ebiten.KeyB):

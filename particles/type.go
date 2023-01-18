@@ -26,6 +26,5 @@ type Particle struct {
 	Opacity, Base_Opacity           float64
 	VitesseX, VitesseY              float64
 	Lifetime						float64
-	Alive							bool
 
 }
