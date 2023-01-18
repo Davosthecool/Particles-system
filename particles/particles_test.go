@@ -121,9 +121,9 @@ func TestUpdateParticleSpawnZero(t *testing.T){
 func TestUpdateParticleSpawnFloat(t *testing.T){
 	config.Get("../config.json")
 	sys := NewSystem()
-	config.General.SpawnRate = rand.Float64()
+	SpawnRate := rand.Float64()
 	var spawn float64
-	for i:=0;i<100;i++{
+	for i:=0.0;i<SpawnRate;i++{
 		longueur := sys.Content.Len()
 		spawn+=config.General.SpawnRate
 		sys.Update()
@@ -138,9 +138,9 @@ func TestUpdateParticleSpawnFloat(t *testing.T){
 func TestUpdateParticleSpawnInt(t *testing.T){
 	config.Get("../config.json")
 	sys := NewSystem()
-	config.General.SpawnRate = float64(rand.Intn(1000))
+	SpawnRate := rand.Intn(1000)
 
-	for i:=0;i<100;i++{
+	for i:=0;i<SpawnRate;i++{
 		longueur := sys.Content.Len()
 		sys.Update()
 		if longueur != sys.Content.Len()-int(config.General.SpawnRate){
@@ -182,4 +182,31 @@ func LifetimeParticule(t *testing.T){
 	}
 }
 
-func LifetimeParticule(t *testing.T){}
+func TestBounceWithoutKillZone(t *testing.T){
+	config.Get("../config.json")
+	sys := NewSystem()
+	config.General.Bounce = true 
+	config.General.WindowSizeX = (rand.Intn(800))
+	config.General.WindowSizeY = (rand.Intn(800))
+	for element := sys.Content.Front() ; element != nil ; element = element.Next(){
+		posx:=element.Value.(*Particle).PositionX 
+		posy:=element.Value.(*Particle).PositionY
+		vitx:=element.Value.(*Particle).VitesseX
+		vity:=element.Value.(*Particle).VitesseY
+		sys.Update()
+		if posx > config.General.Kill_particule_WindowSizeX && vitx != -vitx {
+			t.Error("Vos particules ne rebondissent pas sur le bord haut et bas de l'écran ")
+		}
+		if posy > config.General.Kill_particule_WindowSizeY && vity!= -vity {
+			t.Error("Vos particules ne rebondissent pas sur le bord gauche et droit de l'écran ")
+		}
+	}
+
+}
+
+// case posx < -config.General.Kill_particule_WindowSizeX || posx> float64(config.General.WindowSizeX)+config.General.Kill_particule_WindowSizeX:
+// 	p.VitesseX*=-1
+// case posy < -config.General.Kill_particule_WindowSizeY || posy> float64(config.General.WindowSizeY)+config.General.Kill_particule_WindowSizeY:
+// 	p.VitesseY*=-1	
+// }
+// }

@@ -99,7 +99,7 @@ func (g *game) Draw(screen *ebiten.Image) {
 		ebitenutil.DebugPrintAt(screen,"Pour ajouter une lettre dans la phrase : 'Entrez une lettre pour ...', il suffit simplement d'appuyer sur la lettre du clavier pour que celle-ci apparaisse", 0, 140)
 		ebitenutil.DebugPrintAt(screen,"Pour enlever une lettre dans la phrase : 'Entrez une lettre pour ...', il suffit simplement d'appuyer sur la KeyBackspace situé à gauche de Ver Num pour l'enlever", 0, 160)
 
-		ebitenutil.DebugPrintAt(screen,"la touche Espace vous permet de cacher le menu de configuration", 0, 190)
+		ebitenutil.DebugPrintAt(screen,"la touche Espace vous permet de cacher le menu de configuration une fois dedans ", 0, 190)
 
 	}else{
 		ebitenutil.DebugPrint(screen,"Appuyez sur Echap pour voir/retirer le menu")

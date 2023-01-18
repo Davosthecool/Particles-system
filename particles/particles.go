@@ -2,8 +2,8 @@ package particles
 
 import (
 	"project-particles/config"
-	"math/rand"
-)
+	"math/rand")
+
 func (s *System) newParticle() {
 
 	//newParticule comporte les caractéristique d'une particule tels que sa position, sa couleur, sa taille afin d'afficher correctement les caractéristiques demandées sur l'interface.
@@ -89,14 +89,6 @@ func (p *Particle) SetSpawn(){
 		p.PositionY+=vecy
 	}
 
-	if config.General.TypeGenerateur == 3{
-		vecx:=RandomBetweenFloat(-config.General.RayonSpawnX,config.General.RayonSpawnX)
-		vecy:=config.General.RayonSpawnX-vecx
-
-		p.PositionX+=vecx
-		p.PositionY+=vecy
-
-	}
 }
 
 

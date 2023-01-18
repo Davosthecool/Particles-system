@@ -41,7 +41,7 @@ func (s *System) Update() {
 
 		//ccccc
 		if config.General.Bounce{
-			p.WallBounce()
+			WallBounce(p)
 		}
 
 
