@@ -266,7 +266,7 @@ func TestChangeOpacity(t *testing.T){
 		LifeParticule := element.Value.(*Particle).Lifetime
 		sys.Update()
 		if !config.General.OpacityLifetime && OpacityParticule == BaseOpacityParticule/LifeParticule{
-			t.Error("L'opacité de vos partiules ne diminuent pas !")
+			t.Error("L'opacité de vos particules ne diminuent pas !")
 			break
 		}
 	}
