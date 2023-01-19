@@ -232,7 +232,7 @@ func (g*game) Ajout_Lettre_Champs(){
 	case g.Value == "S1":
 		if inpututil.IsKeyJustPressed(ebiten.KeyKPAdd){
 			config.General.MinColorBlue += 0.1
-		}else if inpututil.IsKeyJustPressed(ebiten.KeyKPAdd){
+		}else if inpututil.IsKeyJustPressed(ebiten.KeyKPSubtract){
 			config.General.MinColorBlue -= 0.1
 		}
 
